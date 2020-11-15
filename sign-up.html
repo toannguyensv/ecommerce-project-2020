@@ -1,8 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
-	<meta charset="utf-8">
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Đăng ký</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+    </style>
 	<style type="text/css">
 		body{
 			font-family: 'Roboto', sans-serif;
@@ -22,13 +29,14 @@
 			box-shadow: 0px 0px 15px #444;
 		}
 		.shadow{
-			box-shadow: 0px 1px 20px #e2e2e2;
+			box-shadow: 0px 1px 20px #eee;
 		}
 		form h2{
 			text-align: center;
 			font-weight: bold;
 			font-size: 1.8rem;
 			color: #307213;
+			margin: 30px auto;
 		}
 		input{
 			border:none;
@@ -96,6 +104,9 @@
 </head>
 
 <body>
+	<div id="preloder">
+        <div class="loader"></div>
+    </div>
 	<div class="container">
 		<form action="#">
 			<h2 style="text-shadow:0px 0px 2px #aaa;">Đăng Ký</h2>
@@ -128,5 +139,14 @@
 		</form>
 		
 	</div>
+
+	<script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.nice-select.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/jquery.slicknav.js"></script>
+    <script src="js/mixitup.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
