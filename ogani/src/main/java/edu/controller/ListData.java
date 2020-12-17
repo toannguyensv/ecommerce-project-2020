@@ -2,6 +2,7 @@ package edu.controller;
 
 import edu.Data;
 import edu.beans.Product;
+import edu.entity.ProductEntity;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,7 +19,7 @@ public class ListData extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Collection<Product> values = Data.data.values();
+        Collection<Product> values = new ProductEntity().getAll();
         request.setAttribute("list",values);
         request.getRequestDispatcher("meat.jsp").forward(request,response);
     }

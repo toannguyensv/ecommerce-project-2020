@@ -99,13 +99,15 @@
                 <div class="col-lg-9">
                     <div class="hero__search">
                         <div class="hero__search__form">
-                            <form action="#">
+
+                            <form action="SearchServlet" method="POST">
                                 <div class="hero__search__categories">
                                     <i class="fa fa-search"></i>
                                 </div>
-                                <input type="text" placeholder="Hôm nay bạn muốn mua gì?">
+                                <input type="text" name="txtSearch" placeholder="Hôm nay bạn muốn mua gì?" required>
                                 <button type="submit" class="site-btn">Tìm kiếm</button>
                             </form>
+
                         </div>
                         <div class="hero__search__phone">
                             <div class="header__top__right__auth mt-3 mr-3">
@@ -189,7 +191,7 @@
                 
                 <div class="col-lg-3 col-md-4 col-sm-6 mix oranges">
                     <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="img/Product/cam-sanh.jpg">
+                        <div class="featured__item__pic set-bg" data-setbg="img/product/cam-sanh.jpg">
                             <ul class="featured__item__pic__hover">
                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                 <li><a href="#"><i class="fa fa-retweet"></i></a></li>
@@ -204,7 +206,7 @@
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables">
                     <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="img/Product/otchuong.jpg">
+                        <div class="featured__item__pic set-bg" data-setbg="img/product/otchuong.jpg">
                             <ul class="featured__item__pic__hover">
                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                 <li><a href="#"><i class="fa fa-retweet"></i></a></li>
@@ -220,7 +222,7 @@
 
                 <div class="col-lg-3 col-md-4 col-sm-6 mix oranges">
                     <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="img/Product/cherry-uc.jpg">
+                        <div class="featured__item__pic set-bg" data-setbg="img/product/cherry-uc.jpg">
                             <ul class="featured__item__pic__hover">
                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                 <li><a href="#"><i class="fa fa-retweet"></i></a></li>
@@ -235,7 +237,7 @@
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables">
                     <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="img/Product/hanhtay.jpg">
+                        <div class="featured__item__pic set-bg" data-setbg="img/product/hanhtay.jpg">
                             <ul class="featured__item__pic__hover">
                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                 <li><a href="#"><i class="fa fa-retweet"></i></a></li>
@@ -250,7 +252,7 @@
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-6 mix oranges">
                     <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="img/Product/chuoi.jpg">
+                        <div class="featured__item__pic set-bg" data-setbg="img/product/chuoi.jpg">
                             <ul class="featured__item__pic__hover">
                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                 <li><a href="#"><i class="fa fa-retweet"></i></a></li>
@@ -265,7 +267,7 @@
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-6 mix oranges">
                     <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="img/Product/luu.jpg">
+                        <div class="featured__item__pic set-bg" data-setbg="img/product/luu.jpg">
                             <ul class="featured__item__pic__hover">
                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                 <li><a href="#"><i class="fa fa-retweet"></i></a></li>
@@ -280,7 +282,7 @@
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-6 mix oranges">
                     <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="img/Product/Kiwi.jpg">
+                        <div class="featured__item__pic set-bg" data-setbg="img/product/kiwi.jpg">
                             <ul class="featured__item__pic__hover">
                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                 <li><a href="#"><i class="fa fa-retweet"></i></a></li>
@@ -295,7 +297,7 @@
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables">
                     <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="img/Product/caibe.jpg">
+                        <div class="featured__item__pic set-bg" data-setbg="img/product/caibe.jpg">
                             <ul class="featured__item__pic__hover">
                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                 <li><a href="#"><i class="fa fa-retweet"></i></a></li>
@@ -310,7 +312,7 @@
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-6 mix fastfood">
                     <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="img/Product/product-5.jpg">
+                        <div class="featured__item__pic set-bg" data-setbg="img/product/product-5.jpg">
                             <ul class="featured__item__pic__hover">
                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                 <li><a href="#"><i class="fa fa-retweet"></i></a></li>
@@ -325,7 +327,7 @@
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-6 mix fresh-meat">
                     <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="img/Product/thitbo.jpg">
+                        <div class="featured__item__pic set-bg" data-setbg="img/product/thitbo.jpg">
                             <ul class="featured__item__pic__hover">
                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                 <li><a href="#"><i class="fa fa-retweet"></i></a></li>
@@ -340,7 +342,7 @@
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-6 mix fastfood">
                     <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="img/Product/hotdog.jpg">
+                        <div class="featured__item__pic set-bg" data-setbg="img/product/hotdog.jpg">
                             <ul class="featured__item__pic__hover">
                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                 <li><a href="#"><i class="fa fa-retweet"></i></a></li>
@@ -355,7 +357,7 @@
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables">
                     <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="img/Product/rauden.jpg">
+                        <div class="featured__item__pic set-bg" data-setbg="img/product/rauden.jpg">
                             <ul class="featured__item__pic__hover">
                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                 <li><a href="#"><i class="fa fa-retweet"></i></a></li>
@@ -370,7 +372,7 @@
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-6 mix fresh-meat">
                     <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="img/Product/botai.jpg">
+                        <div class="featured__item__pic set-bg" data-setbg="img/product/botai.jpg">
                             <ul class="featured__item__pic__hover">
                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                 <li><a href="#"><i class="fa fa-retweet"></i></a></li>
@@ -385,7 +387,7 @@
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-6 mix fresh-meat">
                     <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="img/Product/heocp.jpg">
+                        <div class="featured__item__pic set-bg" data-setbg="img/product/heocp.jpg">
                             <ul class="featured__item__pic__hover">
                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                 <li><a href="#"><i class="fa fa-retweet"></i></a></li>
@@ -400,7 +402,7 @@
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables">
                     <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="img/Product/caithia.jpg">
+                        <div class="featured__item__pic set-bg" data-setbg="img/product/caithia.jpg">
                             <ul class="featured__item__pic__hover">
                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                 <li><a href="#"><i class="fa fa-retweet"></i></a></li>
@@ -415,7 +417,7 @@
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-6 mix fresh-meat">
                     <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="img/Product/cachep.jpg">
+                        <div class="featured__item__pic set-bg" data-setbg="img/product/cachep.jpg">
                             <ul class="featured__item__pic__hover">
                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                 <li><a href="#"><i class="fa fa-retweet"></i></a></li>
@@ -430,7 +432,7 @@
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables">
                     <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="img/Product/raumuong.jpg">
+                        <div class="featured__item__pic set-bg" data-setbg="img/product/raumuong.jpg">
                             <ul class="featured__item__pic__hover">
                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                 <li><a href="#"><i class="fa fa-retweet"></i></a></li>
@@ -445,7 +447,7 @@
                 </div>
                 <div class="col-lg-3 col-md-4 col-sm-6 mix fresh-meat">
                     <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="img/Product/tom.jpg">
+                        <div class="featured__item__pic set-bg" data-setbg="img/product/tom.jpg">
                             <ul class="featured__item__pic__hover">
                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                 <li><a href="#"><i class="fa fa-retweet"></i></a></li>
@@ -460,7 +462,7 @@
                 </div>
                  <div class="col-lg-3 col-md-4 col-sm-6 mix fresh-meat">
                     <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="img/Product/ucga.jpg">
+                        <div class="featured__item__pic set-bg" data-setbg="img/product/ucga.jpg">
                             <ul class="featured__item__pic__hover">
                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                 <li><a href="#"><i class="fa fa-retweet"></i></a></li>
@@ -628,7 +630,7 @@
                                 </a>
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="img/product/Kiwi.jpg" alt="">
+                                        <img src="img/product/kiwi.jpg" alt="">
                                     </div>
                                     <div class="latest-product__item__text">
                                         <h6>Kiwi vàng</h6>

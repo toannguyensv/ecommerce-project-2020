@@ -27,7 +27,6 @@ public class Data {
         data.put("17",new Product("17", "Cá basa kho tộ Godaco gói 500g", "img/lab6/17.jpg", "52.000₫", ""));
         data.put("18",new Product("18", "Cá trứng loại 8 con TÂN HẢI HÒA 200g", "img/lab6/18.jpg", "39.000₫", ""));
         data.put("19",new Product("19", "Bò viên Tân Việt Sin 500g", "img/lab6/19.jpg", "105.000₫", ""));
-        data.put("20",new Product("20", "Chả mực hương vị truyền thống SG Food gói 250g ", "img/lab6/20.jpg", "102.000₫", ""));
 
     }
 }
