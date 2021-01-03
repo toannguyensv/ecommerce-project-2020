@@ -8,16 +8,27 @@ public class Product implements Serializable {
     private String img;
     private String price;
     private String priceSale;
+    private long priceLong;
+    private int quantity;
 
     public Product() {
     }
 
-    public Product(String id, String name, String img, String price, String priceSale) {
+    public Product(String id, String name, String img, String price, String priceSale, long priceLong) {
         this.id = id;
         this.name = name;
         this.img = img;
         this.price = price;
         this.priceSale = priceSale;
+        this.priceLong = priceLong;
+    }
+
+    public long getPriceLong() {
+        return priceLong;
+    }
+
+    public void setPriceLong(long priceLong) {
+        this.priceLong = priceLong;
     }
 
     public String getId() {
@@ -58,6 +69,14 @@ public class Product implements Serializable {
 
     public void setPriceSale(String priceSale) {
         this.priceSale = priceSale;
+    }
+
+    public int getQuantity() { return quantity;}
+
+    public void setQuantity(int quantity) { this.quantity = quantity;}
+
+    public void add() {
+        this.quantity++;
     }
 }
 

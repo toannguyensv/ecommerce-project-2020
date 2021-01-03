@@ -21,7 +21,8 @@ public class ProductEntity {
                         rs.getString(2),
                         rs.getString(3),
                         rs.getString(4),
-                        rs.getString(5)
+                        rs.getString(5),
+                        rs.getLong(6)
                 ));
             }
             rs.close();
@@ -39,13 +40,13 @@ public class ProductEntity {
         Statement s = null;
         try {
             s = ConnectionDB.connect();
-            String sql = "insert into products (id,name,img,price,pricesale) values ";
+            String sql = "insert into products (id,name,img,price,pricesale,priceLong) values ";
             int i = 0;
             for (Product d : data) {
                 if( ++i < data.size())
-                    sql += "(" +d.getId()+ ",\"" +d.getName()+ "\",\"" +d.getImg()+ "\",\"" +d.getPrice()+ "\",\"" +d.getPriceSale()+ "\"),";
+                    sql += "(" +d.getId()+ ",\"" +d.getName()+ "\",\"" +d.getImg()+ "\",\"" +d.getPrice()+ "\",\"" +d.getPriceSale()+ "\",\""+d.getPriceLong()+ "\"),";
                 else
-                    sql += "(" +d.getId()+ ",\"" +d.getName()+ "\",\"" +d.getImg()+ "\",\"" +d.getPrice()+ "\",\"" +d.getPriceSale()+ "\")";
+                    sql += "(" +d.getId()+ ",\"" +d.getName()+ "\",\"" +d.getImg()+ "\",\"" +d.getPrice()+ "\",\"" +d.getPriceSale()+ "\",\""+d.getPriceLong()+ "\")";
             }
 //            System.out.println(sql);
             s.executeUpdate(sql);
@@ -86,7 +87,8 @@ public class ProductEntity {
                     rs.getString(2),
                     rs.getString(3),
                     rs.getString(4),
-                    rs.getString(5)
+                    rs.getString(5),
+                    rs.getLong(6)
                 ));
             }
             rs.close();

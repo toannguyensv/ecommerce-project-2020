@@ -24,8 +24,7 @@ public class ConnectionDB {
     public static void main(String[] args) throws Exception{
         ProductEntity pe= new ProductEntity();
 //        pe.insertAll(Data.data.values());
-        int count = pe.count("thit");
-        System.out.println(count);
+
 
 
 //        Statement s = ConnectionDB.connect();
