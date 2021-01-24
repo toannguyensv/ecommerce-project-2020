@@ -21,11 +21,11 @@ public class addCart extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String id = request.getParameter("id");
-        if( id == null) response.sendRedirect("index.html");
+        if( id == null) response.sendRedirect("home");
         ProductEntity pe = new ProductEntity();
         Product p = pe.getById(id);
         if(p == null) {
-            response.sendRedirect("index.html");
+            response.sendRedirect("home");
             return;
         }
 

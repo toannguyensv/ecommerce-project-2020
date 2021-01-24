@@ -593,6 +593,10 @@ ol {
 
 .hero__categories ul li {
 	list-style: none;
+	padding: 10px 0 12px 40px;
+}
+.hero__categories ul li:hover {
+	background: #dddddd;
 }
 
 .hero__categories ul li a {
