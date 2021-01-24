@@ -2,7 +2,9 @@ package edu.model;
 
 import edu.beans.Product;
 
+import javax.servlet.http.HttpSession;
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,5 +41,11 @@ public class Cart implements Serializable {
         return sum;
     }
 
+    public static Cart getCart(HttpSession session) {
+        return session.getAttribute("cart")==null? new Cart(): (Cart) session.getAttribute("cart");
+    }
 
+    public Collection<Product> getData(){ return data.values(); };
+
+    public void commit(HttpSession session) { session.setAttribute("cart", this);}
 }

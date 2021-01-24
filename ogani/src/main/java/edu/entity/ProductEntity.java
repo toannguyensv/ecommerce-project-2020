@@ -1,5 +1,7 @@
 package edu.entity;
 
+import edu.beans.Account;
+import edu.beans.Category;
 import edu.beans.Product;
 import edu.db.ConnectionDB;
 
@@ -95,5 +97,214 @@ public class ProductEntity {
             s.close();
             return re;
     }
+    public Product getById(String id) {
+        PreparedStatement s = null;
+        try {
+            String sql = "select * from products where id=?";
+            s = ConnectionDB.connect(sql);
+            s.setString(1,id);
 
+            ResultSet rs = s.executeQuery();
+            Product p = null;
+            while(rs.next()) {
+                p = new Product(
+                        rs.getString(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getLong(6)
+                );
+            }
+            rs.close();
+            s.close();
+            return p;
+
+        } catch (ClassNotFoundException|SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public Account login(String user, String pass) {
+        String query = "select * from account\n"
+                + "where `user`=?\n"
+                + "and pass=?";
+        PreparedStatement s = null;
+        try {
+            s = ConnectionDB.connect(query);
+            s.setString(1,user);
+            s.setString(2,pass);
+
+            ResultSet rs = s.executeQuery();
+            while (rs.next()) {
+                return new Account(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getInt(4),
+                        rs.getInt(5));
+            }
+        } catch (Exception e){
+        }
+        return null;
+    }
+    public Account checkExist(String user) {
+        String query = "select * from account\n"
+                + "where `user`=?";
+
+        PreparedStatement s = null;
+        try {
+            s = ConnectionDB.connect(query);
+            s.setString(1,user);
+
+            ResultSet rs = s.executeQuery();
+            while (rs.next()) {
+                return new Account(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getInt(4),
+                        rs.getInt(5));
+            }
+        } catch (Exception e){
+        }
+        return null;
+    }
+
+    public void signUp(String user, String pass) {
+        String sql = "INSERT INTO account(`user`,pass,isSell,isAdmin) " +
+                "VALUES (?,?,0,0)";
+        PreparedStatement s = null;
+        try {
+            s = ConnectionDB.connect(sql);
+            s.setString(1,user);
+            s.setString(2,pass);
+
+            s.executeUpdate();
+
+        } catch (Exception e){
+        }
+    }
+    public void deleteProduct(String pid){
+        String query = "delete from products where id = ?";
+        PreparedStatement s = null;
+        try{
+            s = ConnectionDB.connect(query);
+            s.setString(1,pid);
+            s.executeUpdate();
+
+        } catch (Exception e){
+        }
+    }
+
+    public List<Category> getAllCategory(){
+        List<Category> list = new LinkedList<>();
+        String sql = "select * from category";
+        PreparedStatement s = null;
+        try{
+            s = ConnectionDB.connect(sql);
+            ResultSet rs = s.executeQuery();
+            while (rs.next()){
+                list.add(new Category(rs.getInt(1),
+                        rs.getString(2)));
+            }
+        } catch (Exception e){
+        }
+        return list;
+    }
+
+    public List<Product> getProductByCid(String cid){
+        List<Product> list = new LinkedList<>();
+        String sql = "select * from products WHERE cateId=?";
+        PreparedStatement s = null;
+        try{
+            s = ConnectionDB.connect(sql);
+            s.setString(1,cid);
+            ResultSet rs = s.executeQuery();
+            while (rs.next()){
+                list.add(new Product(
+                        rs.getString(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getLong(6)
+                ));
+            }
+        } catch (Exception e){
+        }
+        return list;
+    }
+    public void insertProduct(String name, String img, String price,
+                              String priceLong, String category) {
+        String query = "INSERT INTO products (`name`, img, price, priceLong, cateId)\n" +
+                "       VALUES (?, ?, ?, ?, ?)";
+        PreparedStatement s = null;
+        try{
+            s = ConnectionDB.connect(query);
+            s.setString(1,name);
+            s.setString(2,img);
+            s.setString(3,price);
+            s.setString(4,priceLong);
+            s.setString(5,category);
+
+            s.executeUpdate();
+
+        } catch (Exception e){
+        }
+    }
+
+    public void editProduct(String name, String img, String price,
+                              String priceLong, String category, String id) {
+        String query = "UPDATE products\n" +
+                "SET `name`=?, img=?, price=?, priceLong=?, cateId=?\n" +
+                "WHERE id=?";
+        PreparedStatement s = null;
+        try{
+            s = ConnectionDB.connect(query);
+            s.setString(1,name);
+            s.setString(2,img);
+            s.setString(3,price);
+            s.setString(4,priceLong);
+            s.setString(5,category);
+            s.setString(6,id);
+            s.executeUpdate();
+
+        } catch (Exception e){
+        }
+    }
+
+    public List<Product> get5Each(int index, int size) {
+        List<Product> list = new LinkedList<>();
+        String sql = "with x as(select *,ROW_NUMBER() over (ORDER by id) as r\n" +
+                "                from products)\n" +
+                "                select * from x where r between (?*?-(?-1)) and (?*?)";
+        PreparedStatement s = null;
+        try{
+            s = ConnectionDB.connect(sql);
+            s.setInt(1, index);
+            s.setInt(2, size);
+            s.setInt(3, size);
+            s.setInt(4, index);
+            s.setInt(5, size);
+            ResultSet rs = s.executeQuery();
+            while (rs.next()){
+                list.add(new Product(
+                        rs.getString("id"),
+                        rs.getString("name"),
+                        rs.getString("img"),
+                        rs.getString("price"),
+                        rs.getString("priceSale"),
+                        rs.getLong("priceLong")
+                ));
+            }
+        } catch (Exception e){
+        }
+        return list;
+    }
+
+    public static void main(String[] args) {
+        ProductEntity pe = new ProductEntity();
+        List<Product> listPage = pe.get5Each(1,5);
+        System.out.println(listPage);
+    }
 }
