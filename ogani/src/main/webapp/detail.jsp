@@ -70,8 +70,8 @@
                             </div>
                         </div>
                     </div>
-                    <a href="#" class="primary-btn">THÊM VÀO GIỎ</a>
-                    <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
+                    <a href="addCart?id=${detail.id}" class="primary-btn">THÊM VÀO GIỎ</a>
+
                     <ul>
                         <li><b>Tình trạng</b> <span>Còn hàng</span></li>
                         <li><b>Giao hàng</b> <span>Trong ngày. <samp> Miễn phí </samp></span></li>

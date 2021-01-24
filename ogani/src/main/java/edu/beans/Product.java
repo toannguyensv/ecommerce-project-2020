@@ -78,6 +78,13 @@ public class Product implements Serializable {
     public void add() {
         this.quantity++;
     }
+    public void addMore(int quantity) {
+        this.quantity += quantity;
+    }
+
+    public void sub() {
+        this.quantity--;
+    }
 }
 
 

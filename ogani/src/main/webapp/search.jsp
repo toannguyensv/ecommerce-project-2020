@@ -56,24 +56,28 @@
         <div class="container">
             <div class="row featured__filter">
 
-                <c:forEach items="${list}" var="p">
+                <c:forEach items="${listPage}" var="p">
                 <div class="col-lg-3 col-md-4 col-sm-6 mix oranges">
                     <div class="featured__item">
                         <div class="featured__item__pic set-bg" data-setbg="${p.img}">
                             <ul class="featured__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+
+                                <li><a href="addCart?id=${p.id}"><i class="fa fa-shopping-cart"></i></a></li>
                             </ul>
                         </div>
                         <div class="featured__item__text">
-                            <h6><a href="#">${p.name}</a></h6>
+                            <h6><a href="detail?pid=${p.id}">${p.name}</a></h6>
                             <h5>${p.price}</h5>
                         </div>
                     </div>
                 </div>
                 </c:forEach>
-                
+                <div class="product__pagination">
+                    <c:forEach begin="1" end="${endPage}" var="i">
+                        <a id="${i}" href="SearchServlet?index=${i}&txtSearch=${txtSearch}">${i}</a>
+
+                    </c:forEach>
+                </div>
             </div>
         </div>
     </section>

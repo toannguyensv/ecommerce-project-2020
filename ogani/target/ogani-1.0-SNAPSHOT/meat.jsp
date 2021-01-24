@@ -59,9 +59,8 @@
                     <div class="featured__item">
                         <div class="featured__item__pic set-bg" data-setbg="${p.img}">
                             <ul class="featured__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li><a href="http://localhost:8080/ogani_war_exploded/addCart?id=${p.id}"><i class="fa fa-shopping-cart"></i></a></li>
+
+                                <li><a href="addCart?id=${p.id}"><i class="fa fa-shopping-cart"></i></a></li>
                             </ul>
                         </div>
                         <div class="featured__item__text">

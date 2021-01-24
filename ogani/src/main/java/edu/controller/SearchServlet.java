@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Collection;
+import java.util.List;
 
 
 @WebServlet(name = "SearchServlet", urlPatterns = "/SearchServlet")
@@ -25,12 +26,29 @@ public class SearchServlet extends HttpServlet {
         try {
             String txtSearch = request.getParameter("txtSearch");
             ProductEntity pe = new ProductEntity();
-            Collection<Product> values = pe.getResult(txtSearch);
+            Collection<Product> list = pe.getResult(txtSearch);
             int count = pe.count(txtSearch);
+
+            String indexS = request.getParameter("index");
+            int index = Integer.parseInt(indexS);
+
+            int countPage = list.size();
+            int pageSize = 8;
+            int endPage = 0;
+            endPage = countPage / pageSize;
+            if(countPage % pageSize != 0){
+                endPage++;
+            }
+
+            List<Product> listPage = pe.get5Each(index,pageSize);
+
+            request.setAttribute("endPage",endPage);
+            request.setAttribute("listPage",listPage);
+            request.setAttribute("index",index);
 
             request.setAttribute("txtSearch",txtSearch);
             request.setAttribute("count",count);
-            request.setAttribute("list",values);
+            request.setAttribute("list",list);
             request.getRequestDispatcher("search.jsp").forward(request,response);
 
         } catch (Exception e){}

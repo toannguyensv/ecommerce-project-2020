@@ -73,6 +73,8 @@
                         <% Cart c = Cart.getCart(session);
                             Collection<Product> data = c.getData();
                             request.setAttribute("data",data);
+                            long total = c.total();
+                            request.setAttribute("total",total);
                         %>
                         <c:forEach items="${data}" var="d">
                         <tr>
@@ -86,7 +88,10 @@
                             <td class="shoping__cart__quantity">
                                 <div class="quantity">
                                     <div class="pro-qty">
-                                        <input type="text" value="${d.quantity}">
+
+                                        <a href="desCart?id=${d.id}&quantity=${d.quantity}"><span class="dec qtybtn">-</span></a>
+                                        <input name="quantity" type="text" value="${d.quantity}">
+                                        <a href="addCart?id=${d.id}"><span class="inc qtybtn">+</span></a>
                                     </div>
                                 </div>
                             </td>
@@ -94,7 +99,7 @@
                                     ${d.quantity * d.priceLong /1000}00đ
                             </td>
                             <td class="shoping__cart__item__close">
-                                <span class="icon_close"></span>
+                                <a href="desCart?id=${d.id}&quantity=0"><span class="icon_close"></span></a>
                             </td>
                         </tr>
                         </c:forEach>
@@ -106,8 +111,8 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="shoping__cart__btns">
-                    <a href="#" class="primary-btn cart-btn">Tiếp tục mua hàng</a>
-                    <a href="cart.jsp" class="primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
+                    <a href="home" class="primary-btn cart-btn">Tiếp tục mua hàng</a>
+                    <a href="refresh" class="primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
                         Cập nhật</a>
                 </div>
             </div>
@@ -127,11 +132,10 @@
                     <h5>Tổng tiền</h5>
                     <ul>
 
-                        <li>Tạm tính <span class="tongcong">85000</span></li>
-                        <li>Tổng cộng <span class="tongcong">85000</span></li>
+                        <li>Tạm tính <span class="tongcong">${total/1000}00đ</span></li>
+                        <li>Tổng cộng <span class="tongcong">${total/1000}00đ</span></li>
 
-                    </ul>
-                    <a href="checkout.html" class="primary-btn">THANH TOÁN</a>
+                    <a href="checkout" class="primary-btn">THANH TOÁN</a>
                 </div>
             </div>
         </div>
@@ -172,7 +176,223 @@
 <script src="js/jquery.slicknav.js"></script>
 <script src="js/mixitup.min.js"></script>
 <script src="js/owl.carousel.min.js"></script>
-<script src="js/main.js"></script>
+<script type="text/javascript">
+    'use strict';
+
+    (function ($) {
+
+        /*------------------
+            Preloader
+        --------------------*/
+        $(window).on('load', function () {
+            $(".loader").fadeOut();
+            $("#preloder").delay(200).fadeOut("slow");
+
+            /*------------------
+                Gallery filter
+            --------------------*/
+            $('.featured__controls li').on('click', function () {
+                $('.featured__controls li').removeClass('active');
+                $(this).addClass('active');
+            });
+            if ($('.featured__filter').length > 0) {
+                var containerEl = document.querySelector('.featured__filter');
+                var mixer = mixitup(containerEl);
+            }
+        });
+
+        /*------------------
+            Background Set
+        --------------------*/
+        $('.set-bg').each(function () {
+            var bg = $(this).data('setbg');
+            $(this).css('background-image', 'url(' + bg + ')');
+        });
+
+        //Humberger Menu
+        $(".humberger__open").on('click', function () {
+            $(".humberger__menu__wrapper").addClass("show__humberger__menu__wrapper");
+            $(".humberger__menu__overlay").addClass("active");
+            $("body").addClass("over_hid");
+        });
+
+        $(".humberger__menu__overlay").on('click', function () {
+            $(".humberger__menu__wrapper").removeClass("show__humberger__menu__wrapper");
+            $(".humberger__menu__overlay").removeClass("active");
+            $("body").removeClass("over_hid");
+        });
+
+        /*------------------
+            Navigation
+        --------------------*/
+        $(".mobile-menu").slicknav({
+            prependTo: '#mobile-menu-wrap',
+            allowParentLinks: true
+        });
+
+        /*-----------------------
+            Categories Slider
+        ------------------------*/
+        $(".categories__slider").owlCarousel({
+            loop: true,
+            margin: 0,
+            items: 4,
+            dots: false,
+            nav: true,
+            navText: ["<span class='fa fa-angle-left'><span/>", "<span class='fa fa-angle-right'><span/>"],
+            animateOut: 'fadeOut',
+            animateIn: 'fadeIn',
+            smartSpeed: 1200,
+            autoHeight: false,
+            autoplay: true,
+            responsive: {
+
+                0: {
+                    items: 1,
+                },
+
+                480: {
+                    items: 2,
+                },
+
+                768: {
+                    items: 3,
+                },
+
+                992: {
+                    items: 4,
+                }
+            }
+        });
+
+
+        $('.hero__categories__all').on('click', function(){
+            $('.hero__categories ul').slideToggle(400);
+        });
+
+        /*--------------------------
+            Latest Product Slider
+        ----------------------------*/
+        $(".latest-product__slider").owlCarousel({
+            loop: true,
+            margin: 0,
+            items: 1,
+            dots: false,
+            nav: true,
+            navText: ["<span class='fa fa-angle-left'><span/>", "<span class='fa fa-angle-right'><span/>"],
+            smartSpeed: 1200,
+            autoHeight: false,
+            autoplay: true
+        });
+
+        /*-----------------------------
+            Product Discount Slider
+        -------------------------------*/
+        $(".product__discount__slider").owlCarousel({
+            loop: true,
+            margin: 0,
+            items: 3,
+            dots: true,
+            smartSpeed: 1200,
+            autoHeight: false,
+            autoplay: true,
+            responsive: {
+
+                320: {
+                    items: 1,
+                },
+
+                480: {
+                    items: 2,
+                },
+
+                768: {
+                    items: 2,
+                },
+
+                992: {
+                    items: 3,
+                }
+            }
+        });
+
+        /*---------------------------------
+            Product Details Pic Slider
+        ----------------------------------*/
+        $(".product__details__pic__slider").owlCarousel({
+            loop: true,
+            margin: 20,
+            items: 4,
+            dots: true,
+            smartSpeed: 1200,
+            autoHeight: false,
+            autoplay: true
+        });
+
+        /*-----------------------
+            Price Range Slider
+        ------------------------ */
+        var rangeSlider = $(".price-range"),
+            minamount = $("#minamount"),
+            maxamount = $("#maxamount"),
+            minPrice = rangeSlider.data('min'),
+            maxPrice = rangeSlider.data('max');
+        rangeSlider.slider({
+            range: true,
+            min: minPrice,
+            max: maxPrice,
+            values: [minPrice, maxPrice],
+            slide: function (event, ui) {
+                minamount.val('$' + ui.values[0]);
+                maxamount.val('$' + ui.values[1]);
+            }
+        });
+        minamount.val('$' + rangeSlider.slider("values", 0));
+        maxamount.val('$' + rangeSlider.slider("values", 1));
+
+        /*--------------------------
+            Select
+        ----------------------------*/
+        $("select").niceSelect();
+
+        /*------------------
+            Single Product
+        --------------------*/
+        $('.product__details__pic__slider img').on('click', function () {
+
+            var imgurl = $(this).data('imgbigurl');
+            var bigImg = $('.product__details__pic__item--large').attr('src');
+            if (imgurl != bigImg) {
+                $('.product__details__pic__item--large').attr({
+                    src: imgurl
+                });
+            }
+        });
+
+        /*-------------------
+            Quantity change
+        --------------------- */
+        <%--var proQty = $('.pro-qty');--%>
+        <%--proQty.prepend('<a href="addCart?id=${d.id}"><span class="dec qtybtn">-</span></a>');--%>
+        <%--proQty.append('<a href="addCart?id=${d.id}"><span class="inc qtybtn">+</span></a>');--%>
+        <%--proQty.on('click', '.qtybtn', function () {--%>
+        <%--    var $button = $(this);--%>
+        <%--    var oldValue = $button.parent().find('input').val();--%>
+        <%--    if ($button.hasClass('inc')) {--%>
+        <%--        var newVal = parseFloat(oldValue) + 1;--%>
+        <%--    } else {--%>
+        <%--        // Don't allow decrementing below zero--%>
+        <%--        if (oldValue > 0) {--%>
+        <%--            var newVal = parseFloat(oldValue) - 1;--%>
+        <%--        } else {--%>
+        <%--            newVal = 0;--%>
+        <%--        }--%>
+        <%--    }--%>
+        <%--    $button.parent().find('input').val(newVal);--%>
+        <%--});--%>
+
+    })(jQuery);
+</script>
 
 <script type="text/javascript">
     var tien = document.getElementsByClassName("tongcong");

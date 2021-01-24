@@ -30,7 +30,7 @@
                 </div>
                 <div class="col-sm-6">
                     <a href="#addEmployeeModal"  class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Thêm sản phẩm</span></a>
-                    <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Xóa</span></a>
+
                 </div>
             </div>
         </div>
@@ -83,7 +83,7 @@
             </ul>
         </div>
     </div>
-    <a href="#"><button type="button" class="btn btn-primary">Trang chủ</button>
+    <a href="home"><button type="button" class="btn btn-primary">Trang chủ</button>
 
 </div>
 <!-- Edit Modal HTML -->

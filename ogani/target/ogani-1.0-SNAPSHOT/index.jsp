@@ -50,7 +50,7 @@
                 <nav class="header__menu">
                     <ul>
                         <li class="active"><a href="home">Trang chủ</a></li>
-                        <li><a href="./shop-grid.html">Cửa hàng</a></li>
+                        <li><a href="shopGrid?index=1">Cửa hàng</a></li>
                         <li><a href="./contact.html">Liên hệ</a></li>
                         <c:if test="${sessionScope.acc.isSell == 1}">
                             <li><a href="manage?index=1">Quản lý sản phẩm</a></li>
@@ -99,7 +99,7 @@
                 <div class="hero__search">
                     <div class="hero__search__form">
 
-                        <form action="SearchServlet" method="POST">
+                        <form action="SearchServlet?index=1" method="POST">
                             <div class="hero__search__categories">
                                 <i class="fa fa-search"></i>
                             </div>

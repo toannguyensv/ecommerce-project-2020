@@ -24,6 +24,17 @@ public class Cart implements Serializable {
         data.put(p.getId(), p);
     }
 
+    public void sub(Product p) {
+        if(p == null) return;
+        if(data.containsKey(p.getId())) {
+            data.get(p.getId()).sub();
+            return;
+        }
+        p.setQuantity(1);
+        data.put(p.getId(), p);
+    }
+
+
     public void update(String id, int quantity) {
         if(quantity < 0) return;
         if(data.containsKey(id)) data.get(id).setQuantity(quantity);
