@@ -131,10 +131,9 @@
         <div class="row">
             <div class="col-lg-3 col-md-4 col-sm-6 mix oranges">
                 <div class="featured__item">
-                    <div class="featured__item__pic set-bg" data-setbg="img/Product/cam-sanh.jpg">
+                    <div class="featured__item__pic set-bg" data-setbg="img/product/cam-sanh.jpg">
                         <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+
                             <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
                         </ul>
                     </div>
@@ -146,10 +145,9 @@
             </div>
             <div class="col-lg-3 col-md-4 col-sm-6 mix oranges">
                 <div class="featured__item">
-                    <div class="featured__item__pic set-bg" data-setbg="img/Product/cherry-uc.jpg">
+                    <div class="featured__item__pic set-bg" data-setbg="img/product/cherry-uc.jpg">
                         <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+
                             <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
                         </ul>
                     </div>
@@ -161,10 +159,9 @@
             </div>
             <div class="col-lg-3 col-md-4 col-sm-6 mix oranges">
                 <div class="featured__item">
-                    <div class="featured__item__pic set-bg" data-setbg="img/Product/chuoi.jpg">
+                    <div class="featured__item__pic set-bg" data-setbg="img/product/chuoi.jpg">
                         <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+
                             <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
                         </ul>
                     </div>
@@ -176,10 +173,9 @@
             </div>
             <div class="col-lg-3 col-md-4 col-sm-6 mix oranges">
                 <div class="featured__item">
-                    <div class="featured__item__pic set-bg" data-setbg="img/Product/Kiwi.jpg">
+                    <div class="featured__item__pic set-bg" data-setbg="img/product/kiwi.jpg">
                         <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+
                             <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
                         </ul>
                     </div>
