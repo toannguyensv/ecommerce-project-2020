@@ -275,7 +275,7 @@ public class ProductEntity {
 
     public List<Product> get5Each(int index, int size) {
         List<Product> list = new LinkedList<>();
-        String sql = "with x as(select *,ROW_NUMBER() over (ORDER by id) as r\n" +
+        String sql = "with x as(select *,ROW_NUMBER() over (ORDER by id DESC) as r\n" +
                 "                from products)\n" +
                 "                select * from x where r between (?*?-(?-1)) and (?*?)";
         PreparedStatement s = null;
@@ -286,6 +286,64 @@ public class ProductEntity {
             s.setInt(3, size);
             s.setInt(4, index);
             s.setInt(5, size);
+            ResultSet rs = s.executeQuery();
+            while (rs.next()){
+                list.add(new Product(
+                        rs.getString("id"),
+                        rs.getString("name"),
+                        rs.getString("img"),
+                        rs.getString("price"),
+                        rs.getString("priceSale"),
+                        rs.getLong("priceLong")
+                ));
+            }
+        } catch (Exception e){
+        }
+        return list;
+    }
+    public List<Product> getSearchList(String txtSearch, int index, int size) {
+        List<Product> list = new LinkedList<>();
+        String sql = "with x as(select *,ROW_NUMBER() over (ORDER by id DESC) as r\n" +
+                "                from products where name like ?)\n" +
+                "                select * from x where r between (?*?-(?-1)) and (?*?)";
+        PreparedStatement s = null;
+        try{
+            s = ConnectionDB.connect(sql);
+            s.setString(1,"%"+txtSearch+"%");
+            s.setInt(2, index);
+            s.setInt(3, size);
+            s.setInt(4, size);
+            s.setInt(5, index);
+            s.setInt(6, size);
+            ResultSet rs = s.executeQuery();
+            while (rs.next()){
+                list.add(new Product(
+                        rs.getString("id"),
+                        rs.getString("name"),
+                        rs.getString("img"),
+                        rs.getString("price"),
+                        rs.getString("priceSale"),
+                        rs.getLong("priceLong")
+                ));
+            }
+        } catch (Exception e){
+        }
+        return list;
+    }
+    public List<Product> getListByCate(int cid, int index, int size) {
+        List<Product> list = new LinkedList<>();
+        String sql = "with x as(select *,ROW_NUMBER() over (ORDER by id) as r\n" +
+                "                from products where cateId=?)\n" +
+                "                select * from x where r between (?*?-(?-1)) and (?*?)";
+        PreparedStatement s = null;
+        try{
+            s = ConnectionDB.connect(sql);
+            s.setInt(1,cid);
+            s.setInt(2, index);
+            s.setInt(3, size);
+            s.setInt(4, size);
+            s.setInt(5, index);
+            s.setInt(6, size);
             ResultSet rs = s.executeQuery();
             while (rs.next()){
                 list.add(new Product(

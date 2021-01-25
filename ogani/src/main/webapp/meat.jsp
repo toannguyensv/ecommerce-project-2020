@@ -54,22 +54,31 @@
     <section class="featured spad">
         <div class="container">
             <div class="row featured__filter">
-                <c:forEach items="${listP}" var="p">
-                <div class="col-lg-3 col-md-4 col-sm-6 mix oranges">
-                    <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="${p.img}">
-                            <ul class="featured__item__pic__hover">
 
-                                <li><a href="addCart?id=${p.id}"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="featured__item__text">
-                            <h6><a href="detail?pid=${p.id}">${p.name}</a></h6>
-                            <h5>${p.price}</h5>
+                <c:forEach items="${listPage}" var="p">
+                    <div class="col-lg-3 col-md-4 col-sm-6 mix oranges">
+                        <div class="featured__item">
+                            <div class="featured__item__pic set-bg" data-setbg="${p.img}">
+                                <ul class="featured__item__pic__hover">
+
+                                    <li><a href="addCart?id=${p.id}"><i class="fa fa-shopping-cart"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="featured__item__text">
+                                <h6><a href="detail?pid=${p.id}">${p.name}</a></h6>
+                                <h5>${p.price}</h5>
+                            </div>
                         </div>
                     </div>
-                </div>
                 </c:forEach>
+                <div class="clearfix" style="width: 100%">
+                    <div class="product__pagination">
+                        <c:forEach begin="1" end="${endPage}" var="i">
+                            <a id="${i}" href="category?index=${i}&cid=${cid}">${i}</a>
+
+                        </c:forEach>
+                    </div>
+                </div>
                 
             </div>
         </div>

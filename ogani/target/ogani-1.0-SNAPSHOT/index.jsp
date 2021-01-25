@@ -90,7 +90,7 @@
                     </div>
                     <ul>
                         <c:forEach items="${listC}" var="o">
-                            <li><a href="category?cid=${o.cid}">${o.cname}</a></li>
+                            <li><a href="category?index=1&cid=${o.cid}">${o.cname}</a></li>
                         </c:forEach>
                     </ul>
                 </div>
@@ -133,7 +133,7 @@
                         <span>RAU QUẢ TƯƠI</span>
                         <h2>Rau Quả <br />100% Hữu Cơ</h2>
                         <p>Giao hàng miễn phí tận nơi</p>
-                        <a href="#" class="primary-btn">MUA NGAY</a>
+                        <a href="shopGrid?index=1" class="primary-btn">MUA NGAY</a>
                     </div>
                 </div>
             </div>
@@ -149,27 +149,27 @@
             <div class="categories__slider owl-carousel">
                 <div class="col-lg-3">
                     <div class="categories__item set-bg" data-setbg="img/categories/cat-1.jpg">
-                        <h5><a href="#">Trái cây tươi</a></h5>
+                        <h5><a>Trái cây tươi</a></h5>
                     </div>
                 </div>
                 <div class="col-lg-3">
                     <div class="categories__item set-bg" data-setbg="img/categories/cat-2.jpg">
-                        <h5><a href="#">Trái cây sấy</a></h5>
+                        <h5><a>Trái cây sấy</a></h5>
                     </div>
                 </div>
                 <div class="col-lg-3">
                     <div class="categories__item set-bg" data-setbg="img/categories/cat-3.jpg">
-                        <h5><a href="#">Rau củ</a></h5>
+                        <h5><a>Rau củ</a></h5>
                     </div>
                 </div>
                 <div class="col-lg-3">
                     <div class="categories__item set-bg" data-setbg="img/categories/cat-4.png">
-                        <h5><a href="#">Thịt tươi</a></h5>
+                        <h5><a>Thịt tươi</a></h5>
                     </div>
                 </div>
                 <div class="col-lg-3">
                     <div class="categories__item set-bg" data-setbg="img/categories/cat-5.jpg">
-                        <h5><a href="#">Cá</a></h5>
+                        <h5><a>Cá</a></h5>
                     </div>
                 </div>
             </div>
@@ -203,13 +203,12 @@
                 <div class="featured__item">
                     <div class="featured__item__pic set-bg" data-setbg="img/product/cam-sanh.jpg">
                         <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+
+                            <li><a href="addCart?id=23"><i class="fa fa-shopping-cart"></i></a></li>
                         </ul>
                     </div>
                     <div class="featured__item__text">
-                        <h6><a href="#">Cam Sành Hữu Cơ - 1Kg</a></h6>
+                        <h6><a href="detail?pid=23">Cam Sành Hữu Cơ - 1Kg</a></h6>
                         <h5>65.000đ</h5>
                     </div>
                 </div>
@@ -218,13 +217,12 @@
                 <div class="featured__item">
                     <div class="featured__item__pic set-bg" data-setbg="img/product/otchuong.jpg">
                         <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+
+                            <li><a href="addCart?id=24"><i class="fa fa-shopping-cart"></i></a></li>
                         </ul>
                     </div>
                     <div class="featured__item__text">
-                        <h6><a href="#">Ớt chuông xanh 1kg</a></h6>
+                        <h6><a href="detail?pid=24">Ớt chuông xanh 1kg</a></h6>
                         <h5>65.000đ</h5>
                     </div>
                 </div>
@@ -234,13 +232,12 @@
                 <div class="featured__item">
                     <div class="featured__item__pic set-bg" data-setbg="img/product/cherry-uc.jpg">
                         <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+
+                            <li><a href="addCart?id=26"><i class="fa fa-shopping-cart"></i></a></li>
                         </ul>
                     </div>
                     <div class="featured__item__text">
-                        <h6><a href="#">Cherry Úc - 0.5Kg</a></h6>
+                        <h6><a href="detail?pid=26">Cherry Úc - 0.5Kg</a></h6>
                         <h5>499.000đ</h5>
                     </div>
                 </div>
@@ -249,13 +246,12 @@
                 <div class="featured__item">
                     <div class="featured__item__pic set-bg" data-setbg="img/product/hanhtay.jpg">
                         <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+
+                            <li><a href="addCart?id=27"><i class="fa fa-shopping-cart"></i></a></li>
                         </ul>
                     </div>
                     <div class="featured__item__text">
-                        <h6><a href="#">Hành tây Đà Lạt 500g</a></h6>
+                        <h6><a href="detail?pid=27">Hành tây Đà Lạt 500g</a></h6>
                         <h5>40.000đ</h5>
                     </div>
                 </div>
@@ -264,13 +260,12 @@
                 <div class="featured__item">
                     <div class="featured__item__pic set-bg" data-setbg="img/product/chuoi.jpg">
                         <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+
+                            <li><a href="addCart?id=28"><i class="fa fa-shopping-cart"></i></a></li>
                         </ul>
                     </div>
                     <div class="featured__item__text">
-                        <h6><a href="#">Chuối tiêu - 1Kg</a></h6>
+                        <h6><a href="detail?pid=28">Chuối tiêu - 1Kg</a></h6>
                         <h5>75.000đ</h5>
                     </div>
                 </div>
@@ -279,13 +274,12 @@
                 <div class="featured__item">
                     <div class="featured__item__pic set-bg" data-setbg="img/product/luu.jpg">
                         <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+
+                            <li><a href="addCart?id=29"><i class="fa fa-shopping-cart"></i></a></li>
                         </ul>
                     </div>
                     <div class="featured__item__text">
-                        <h6><a href="shop-details.html">Lựu đỏ - 0.5Kg</a></h6>
+                        <h6><a href="detail?pid=29">Lựu đỏ - 0.5Kg</a></h6>
                         <h5>239.000đ</h5>
                     </div>
                 </div>
@@ -294,13 +288,12 @@
                 <div class="featured__item">
                     <div class="featured__item__pic set-bg" data-setbg="img/product/kiwi.jpg">
                         <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+
+                            <li><a href="addCart?id=30"><i class="fa fa-shopping-cart"></i></a></li>
                         </ul>
                     </div>
                     <div class="featured__item__text">
-                        <h6><a href="#">Kiwi vàng - 0.5Kg</a></h6>
+                        <h6><a href="detail?pid=30">Kiwi vàng - 0.5Kg</a></h6>
                         <h5>165.000đ</h5>
                     </div>
                 </div>
@@ -309,13 +302,12 @@
                 <div class="featured__item">
                     <div class="featured__item__pic set-bg" data-setbg="img/product/caibe.jpg">
                         <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+
+                            <li><a href="addCart?id=31"><i class="fa fa-shopping-cart"></i></a></li>
                         </ul>
                     </div>
                     <div class="featured__item__text">
-                        <h6><a href="#">Cải bẹ xanh 400g</a></h6>
+                        <h6><a href="detail?pid=31">Cải bẹ xanh 400g</a></h6>
                         <h5>15.000đ</h5>
                     </div>
                 </div>
@@ -324,13 +316,12 @@
                 <div class="featured__item">
                     <div class="featured__item__pic set-bg" data-setbg="img/product/product-5.jpg">
                         <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+
+                            <li><a href="addCart?id=32"><i class="fa fa-shopping-cart"></i></a></li>
                         </ul>
                     </div>
                     <div class="featured__item__text">
-                        <h6><a href="#">Hamburger</a></h6>
+                        <h6><a href="detail?pid=32">Hamburger</a></h6>
                         <h5>45.000đ</h5>
                     </div>
                 </div>
@@ -339,13 +330,12 @@
                 <div class="featured__item">
                     <div class="featured__item__pic set-bg" data-setbg="img/product/thitbo.jpg">
                         <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+
+                            <li><a href="addCart?id=1"><i class="fa fa-shopping-cart"></i></a></li>
                         </ul>
                     </div>
                     <div class="featured__item__text">
-                        <h6><a href="#">Gầu bò Mỹ - 300g</a></h6>
+                        <h6><a href="detail?pid=1">Gầu bò Mỹ - 300g</a></h6>
                         <h5>149.000đ</h5>
                     </div>
                 </div>
@@ -354,13 +344,12 @@
                 <div class="featured__item">
                     <div class="featured__item__pic set-bg" data-setbg="img/product/hotdog.jpg">
                         <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+
+                            <li><a href="addCart?id=33"><i class="fa fa-shopping-cart"></i></a></li>
                         </ul>
                     </div>
                     <div class="featured__item__text">
-                        <h6><a href="#">Hot dog</a></h6>
+                        <h6><a href="detail?pid=33">Hot dog</a></h6>
                         <h5>35.000đ</h5>
                     </div>
                 </div>
@@ -369,13 +358,12 @@
                 <div class="featured__item">
                     <div class="featured__item__pic set-bg" data-setbg="img/product/rauden.jpg">
                         <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+
+                            <li><a href="addCart?id=34"><i class="fa fa-shopping-cart"></i></a></li>
                         </ul>
                     </div>
                     <div class="featured__item__text">
-                        <h6><a href="#">Rau dền 400g</a></h6>
+                        <h6><a href="detail?pid=34">Rau dền 400g</a></h6>
                         <h5>15.000đ</h5>
                     </div>
                 </div>
@@ -384,13 +372,12 @@
                 <div class="featured__item">
                     <div class="featured__item__pic set-bg" data-setbg="img/product/botai.jpg">
                         <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+
+                            <li><a href="addCart?id=2"><i class="fa fa-shopping-cart"></i></a></li>
                         </ul>
                     </div>
                     <div class="featured__item__text">
-                        <h6><a href="#">Bò tái Úc - 250g</a></h6>
+                        <h6><a href="detail?pid=2">Bò tái Úc - 250g</a></h6>
                         <h5>109.000đ</h5>
                     </div>
                 </div>
@@ -399,13 +386,12 @@
                 <div class="featured__item">
                     <div class="featured__item__pic set-bg" data-setbg="img/product/heocp.jpg">
                         <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+
+                            <li><a href="addCart?id=3"><i class="fa fa-shopping-cart"></i></a></li>
                         </ul>
                     </div>
                     <div class="featured__item__text">
-                        <h6><a href="#">Sườn non heo C.P khay 500g</a></h6>
+                        <h6><a href="detail?pid=3">Sườn non heo C.P khay 500g</a></h6>
                         <h5>209.000đ</h5>
                     </div>
                 </div>
@@ -414,13 +400,12 @@
                 <div class="featured__item">
                     <div class="featured__item__pic set-bg" data-setbg="img/product/caithia.jpg">
                         <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+
+                            <li><a href="addCart?id=35"><i class="fa fa-shopping-cart"></i></a></li>
                         </ul>
                     </div>
                     <div class="featured__item__text">
-                        <h6><a href="#">Cải thìa 400g</a></h6>
+                        <h6><a href="detail?pid=35">Cải thìa 400g</a></h6>
                         <h5>20.000đ</h5>
                     </div>
                 </div>
@@ -429,13 +414,12 @@
                 <div class="featured__item">
                     <div class="featured__item__pic set-bg" data-setbg="img/product/cachep.jpg">
                         <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+
+                            <li><a href="addCart?id=4"><i class="fa fa-shopping-cart"></i></a></li>
                         </ul>
                     </div>
                     <div class="featured__item__text">
-                        <h6><a href="#">Cá chép khay 800g</a></h6>
+                        <h6><a href="detail?pid=4">Cá chép khay 800g</a></h6>
                         <h5>199.000đ</h5>
                     </div>
                 </div>
@@ -444,13 +428,12 @@
                 <div class="featured__item">
                     <div class="featured__item__pic set-bg" data-setbg="img/product/raumuong.jpg">
                         <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+
+                            <li><a href="addCart?id=36"><i class="fa fa-shopping-cart"></i></a></li>
                         </ul>
                     </div>
                     <div class="featured__item__text">
-                        <h6><a href="#">Rau muống 400g</a></h6>
+                        <h6><a href="detail?pid=36">Rau muống 400g</a></h6>
                         <h5>15.000đ</h5>
                     </div>
                 </div>
@@ -459,13 +442,12 @@
                 <div class="featured__item">
                     <div class="featured__item__pic set-bg" data-setbg="img/product/tom.jpg">
                         <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+
+                            <li><a href="addCart?id=5"><i class="fa fa-shopping-cart"></i></a></li>
                         </ul>
                     </div>
                     <div class="featured__item__text">
-                        <h6><a href="#">Tôm thẻ khay 300g</a></h6>
+                        <h6><a href="detail?pid=5">Tôm thẻ khay 300g</a></h6>
                         <h5>89.000đ</h5>
                     </div>
                 </div>
@@ -474,13 +456,12 @@
                 <div class="featured__item">
                     <div class="featured__item__pic set-bg" data-setbg="img/product/ucga.jpg">
                         <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+
+                            <li><a href="addCart?id=6"><i class="fa fa-shopping-cart"></i></a></li>
                         </ul>
                     </div>
                     <div class="featured__item__text">
-                        <h6><a href="#">Ức gà phi lê 300g</a></h6>
+                        <h6><a href="detail?pid=6">Ức gà phi lê 300g</a></h6>
                         <h5>39.000đ</h5>
                     </div>
                 </div>

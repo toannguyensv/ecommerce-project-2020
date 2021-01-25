@@ -28,6 +28,6 @@ public class EditControl extends HttpServlet {
 
         ProductEntity pe = new ProductEntity();
         pe.editProduct(name,img,price,priceLong,cateId,id);
-        response.sendRedirect("manage");
+        response.sendRedirect("manage?index=1");
     }
 }

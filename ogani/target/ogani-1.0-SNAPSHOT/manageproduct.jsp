@@ -83,7 +83,7 @@
             </ul>
         </div>
     </div>
-    <a href="home"><button type="button" class="btn btn-primary">Trang chủ</button>
+
 
 </div>
 <!-- Edit Modal HTML -->

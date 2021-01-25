@@ -56,10 +56,10 @@
                     </div>
                     <ul>
 
-                        <li><a href="category?cid=1">Thịt</a></li>
-                        <li><a href="category?cid=2">Rau quả</a></li>
-                        <li><a href="category?cid=3">Trái cây</a></li>
-                        <li><a href="category?cid=4">Sản phẩm khác</a></li>
+                        <li><a href="category?index=1&cid=1">Thịt</a></li>
+                        <li><a href="category?index=1&cid=2">Rau quả</a></li>
+                        <li><a href="category?index=1&cid=3">Trái cây</a></li>
+                        <li><a href="category?index=1&cid=4">Sản phẩm khác</a></li>
 
                     </ul>
                 </div>

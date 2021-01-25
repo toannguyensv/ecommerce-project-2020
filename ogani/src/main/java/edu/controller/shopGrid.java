@@ -28,7 +28,7 @@ public class shopGrid extends HttpServlet {
         int index = Integer.parseInt(indexS);
 
         int count = list.size();
-        int pageSize = 8;
+        int pageSize = 16;
         int endPage = 0;
         endPage = count / pageSize;
         if(count % pageSize != 0){

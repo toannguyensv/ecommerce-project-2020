@@ -72,11 +72,13 @@
                     </div>
                 </div>
                 </c:forEach>
-                <div class="product__pagination">
-                    <c:forEach begin="1" end="${endPage}" var="i">
-                        <a id="${i}" href="SearchServlet?index=${i}&txtSearch=${txtSearch}">${i}</a>
+                <div class="clearfix" style="width: 100%">
+                    <div class="product__pagination">
+                        <c:forEach begin="1" end="${endPage}" var="i">
+                            <a id="${i}" href="SearchServlet?index=${i}&txtSearch=${txtSearch}">${i}</a>
 
-                    </c:forEach>
+                        </c:forEach>
+                    </div>
                 </div>
             </div>
         </div>

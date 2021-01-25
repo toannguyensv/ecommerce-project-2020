@@ -33,14 +33,14 @@ public class SearchServlet extends HttpServlet {
             int index = Integer.parseInt(indexS);
 
             int countPage = list.size();
-            int pageSize = 8;
+            int pageSize = 16;
             int endPage = 0;
             endPage = countPage / pageSize;
             if(countPage % pageSize != 0){
                 endPage++;
             }
 
-            List<Product> listPage = pe.get5Each(index,pageSize);
+            List<Product> listPage = pe.getSearchList(txtSearch,index,pageSize);
 
             request.setAttribute("endPage",endPage);
             request.setAttribute("listPage",listPage);

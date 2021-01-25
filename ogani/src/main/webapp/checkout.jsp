@@ -66,47 +66,47 @@
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>Họ<span>*</span></p>
-                                    <input type="text">
+                                    <input type="text" required>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>Tên<span>*</span></p>
-                                    <input type="text">
+                                    <input type="text" required>
                                 </div>
                             </div>
                         </div>
                         <div class="checkout__input">
                             <p>Quê quán<span>*</span></p>
-                            <input type="text">
+                            <input type="text" required>
                         </div>
                         <div class="checkout__input">
                             <p>Địa chỉ<span>*</span></p>
-                            <input type="text" placeholder="Tên đường" class="checkout__input__add">
-                            <input type="text" placeholder="Phường/Xã">
+                            <input type="text" placeholder="Tên đường" class="checkout__input__add" required>
+                            <input type="text" placeholder="Phường/Xã" required>
                         </div>
                         <div class="checkout__input">
                             <p>Tỉnh/Thành Phố<span>*</span></p>
-                            <input type="text">
+                            <input type="text" required>
                         </div>
                         <div class="checkout__input">
                             <p>Quận/Huyện<span>*</span></p>
-                            <input type="text">
+                            <input type="text" required>
                         </div>
                         <div class="checkout__input">
                             <p>Số nhà<span>*</span></p>
-                            <input type="text">
+                            <input type="text" required>
                         </div>
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>Điện thoại<span>*</span></p>
-                                    <input type="text">
+                                    <input type="text" required>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="checkout__input">
-                                    <p>Email<span>*</span></p>
+                                    <p>Email<span></span></p>
                                     <input type="text">
                                 </div>
                             </div>
@@ -114,7 +114,7 @@
                         <div class="checkout__input__checkbox">
                             <label for="acc">
                                 Tạo tài khoản mới?
-                                <input type="checkbox" id="acc">
+                                <input type="checkbox" id="acc" required>
                                 <span class="checkmark"></span>
                             </label>
                         </div>
@@ -123,7 +123,7 @@
 
                         <div class="checkout__input">
                             <p>Lưu ý cho người bán<span>*</span></p>
-                            <input type="text">
+                            <input type="text" required>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6">
@@ -146,7 +146,7 @@
                             <div class="checkout__order__total">Giảm giá <span>0đ</span></div>
                             <div class="checkout__order__total">Tổng tiền <span>${total/1000}00đ</span></div>
 
-                            <button type="button" class="site-btn" data-toggle="modal" data-target="#exampleModal">ĐẶT HÀNG</button>
+                            <button type="submit" class="site-btn"<%--data-toggle="modal" data-target="#exampleModal--%>">ĐẶT HÀNG</button>
                             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">

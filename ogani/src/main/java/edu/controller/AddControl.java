@@ -27,6 +27,6 @@ public class AddControl extends HttpServlet {
 
         ProductEntity pe = new ProductEntity();
         pe.insertProduct(name,img,price,priceLong,cateId);
-        response.sendRedirect("manage");
+        response.sendRedirect("manage?index=1");
     }
 }

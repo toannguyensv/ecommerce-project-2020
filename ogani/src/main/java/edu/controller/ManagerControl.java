@@ -31,7 +31,7 @@ public class ManagerControl extends HttpServlet {
         int index = Integer.parseInt(indexS);
 
         int count = list.size();
-        int pageSize = 5;
+        int pageSize = 15;
         int endPage = 0;
         endPage = count / pageSize;
         if(count % pageSize != 0){
