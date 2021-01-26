@@ -60,7 +60,7 @@
                         <h4>Danh mục</h4>
                         <ul>
                             <c:forEach items="${listC}" var="o">
-                                <li><a href="category?cid=${o.cid}">${o.cname}</a></li>
+                                <li><a href="category?index=1&cid=${o.cid}">${o.cname}</a></li>
                             </c:forEach>
                         </ul>
                     </div>

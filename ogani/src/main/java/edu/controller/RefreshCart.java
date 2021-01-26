@@ -28,6 +28,7 @@ public class RefreshCart extends HttpServlet {
         long total = c.total();
         request.setAttribute("total", total);
         c.commit(session);
+
         response.sendRedirect("cart.jsp");
     }
 }
