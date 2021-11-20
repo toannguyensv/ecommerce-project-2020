@@ -13,7 +13,7 @@ public class ConnectionDB {
     public static Statement connect() throws ClassNotFoundException, SQLException  {
         if(con==null || con.isClosed()) {
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/test1?useUnicode=true&characterEncoding=utf-8", "root","");
+            con = DriverManager.getConnection("jdbc:mysql://45.252.250.6:3306/elhnhxqj_CuoiKyAnToanBaoMat?useUnicode=true&characterEncoding=utf-8", "elhnhxqj_ThuongMaiDienTu2021","elhnhxqj_ThuongMaiDienTu2021");
             return con.createStatement();
         } else {
             return con.createStatement();
@@ -23,7 +23,7 @@ public class ConnectionDB {
     public static PreparedStatement connect(String sql) throws ClassNotFoundException, SQLException  {
         if(con==null ||con.isClosed()) {
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/test1?useUnicode=true&characterEncoding=utf-8", "root","");
+            con = DriverManager.getConnection("jdbc:mysql://45.252.250.6:3306/elhnhxqj_CuoiKyAnToanBaoMat?useUnicode=true&characterEncoding=utf-8", "elhnhxqj_ThuongMaiDienTu2021","elhnhxqj_ThuongMaiDienTu2021");
             return con.prepareStatement(sql);
         } else {
             return con.prepareStatement(sql);
