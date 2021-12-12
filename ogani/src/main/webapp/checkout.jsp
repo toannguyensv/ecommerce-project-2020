@@ -59,71 +59,49 @@
 
         <div class="checkout__form">
             <h4>Thông tin đơn hàng</h4>
-            <form action="#">
+            <form action="order" method="post">
                 <div class="row">
                     <div class="col-lg-8 col-md-6">
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="checkout__input">
-                                    <p>Họ<span>*</span></p>
-                                    <input type="text" required>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="checkout__input">
-                                    <p>Tên<span>*</span></p>
-                                    <input type="text" required>
+                                    <p>Họ tên<span>*</span></p>
+                                    <input type="text" name="ten" required>
                                 </div>
                             </div>
                         </div>
                         <div class="checkout__input">
-                            <p>Quê quán<span>*</span></p>
-                            <input type="text" required>
+                            <p style="font-size: 1.4rem; font-weight: bold; margin: 25px 0">Địa chỉ</p>
                         </div>
                         <div class="checkout__input">
-                            <p>Địa chỉ<span>*</span></p>
-                            <input type="text" placeholder="Tên đường" class="checkout__input__add" required>
-                            <input type="text" placeholder="Phường/Xã" required>
+                            <p>Số nhà, tên đường<span>*</span></p>
+                            <input type="text" name="add1" required>
                         </div>
                         <div class="checkout__input">
-                            <p>Tỉnh/Thành Phố<span>*</span></p>
-                            <input type="text" required>
+                            <p>Xã/Phường<span>*</span></p>
+                            <input type="text" name="add2" required>
                         </div>
                         <div class="checkout__input">
                             <p>Quận/Huyện<span>*</span></p>
-                            <input type="text" required>
+                            <input type="text" name="add3" required>
                         </div>
                         <div class="checkout__input">
-                            <p>Số nhà<span>*</span></p>
-                            <input type="text" required>
+                            <p>Tỉnh/Thành Phố<span>*</span></p>
+                            <input type="text" name="add4" required>
                         </div>
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>Điện thoại<span>*</span></p>
-                                    <input type="text" required>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="checkout__input">
-                                    <p>Email<span></span></p>
-                                    <input type="text">
+                                    <input type="text" name="phone" required>
                                 </div>
                             </div>
                         </div>
-                        <div class="checkout__input__checkbox">
-                            <label for="acc">
-                                Tạo tài khoản mới?
-                                <input type="checkbox" id="acc" required>
-                                <span class="checkmark"></span>
-                            </label>
-                        </div>
-                        <p>Nếu đã có tài khoản? <a href="sign-in.html" onMouseOver="this.style.color='#007bff'">Đăng nhập</a></p>
 
 
                         <div class="checkout__input">
-                            <p>Lưu ý cho người bán<span>*</span></p>
-                            <input type="text" required>
+                            <p>Lưu ý cho người bán</p>
+                            <input type="text">
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6">
@@ -146,24 +124,12 @@
                             <div class="checkout__order__total">Giảm giá <span>0đ</span></div>
                             <div class="checkout__order__total">Tổng tiền <span>${total/1000}00đ</span></div>
 
-                            <button type="submit" class="site-btn"<%--data-toggle="modal" data-target="#exampleModal--%>">ĐẶT HÀNG</button>
-                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">ĐẶT HÀNG THÀNH CÔNG</h5>
+                            <input style="width: 100%; font-size: 1rem" class="site-btn" type="submit" value="ĐẶT HÀNG" />
 
-                                        </div>
-                                        <div class="modal-body">
-                                            Đơn hàng đang được xử lý. Cảm ơn quý khách đã mua hàng!
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
-
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="vat-p">
+                                <span style="float: right; margin: .3rem 0; font-size: .9rem;"><i>(Đã bao gồm VAT nếu có)</i></span>
                             </div>
+
                         </div>
                     </div>
                 </div>

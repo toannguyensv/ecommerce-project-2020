@@ -134,8 +134,9 @@
 
                         <li>Tạm tính <span class="tongcong">${total/1000}00đ</span></li>
                         <li>Tổng cộng <span class="tongcong">${total/1000}00đ</span></li>
-
+                    </ul>
                     <a href="checkout" class="primary-btn">THANH TOÁN</a>
+                    <p style="text-align: center;margin: 10px 0 0;color: red;">${emptyAlert}</p>
                 </div>
             </div>
         </div>

@@ -3,10 +3,12 @@
   <component name="WebContextManager">
     <option name="state">
       <map>
+        <entry key="file://$PROJECT_DIR$/ogani/src/main/webapp/cart.jsp" value="file://$PROJECT_DIR$/ogani/src/main/webapp" />
         <entry key="file://$PROJECT_DIR$/ogani/src/main/webapp/detail.jsp" value="file://$PROJECT_DIR$/ogani/src/main/webapp" />
         <entry key="file://$PROJECT_DIR$/ogani/src/main/webapp/index.jsp" value="file://$PROJECT_DIR$/ogani/src/main/webapp" />
         <entry key="file://$PROJECT_DIR$/ogani/src/main/webapp/manageproduct.jsp" value="file://$PROJECT_DIR$/ogani/src/main/webapp" />
         <entry key="file://$PROJECT_DIR$/ogani/src/main/webapp/meat.jsp" value="file://$PROJECT_DIR$/ogani/src/main/webapp" />
+        <entry key="file://$PROJECT_DIR$/ogani/src/main/webapp/order.jsp" value="file://$PROJECT_DIR$/ogani/src/main/webapp" />
       </map>
     </option>
   </component>

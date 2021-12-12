@@ -20,8 +20,15 @@ public class CheckoutControl extends HttpServlet {
         HttpSession session = request.getSession();
 
         Cart c = Cart.getCart(session);
+        long total = c.total();
 
-        c.commit(session);
-        response.sendRedirect("checkout.jsp");
+        String emptyAlert = "Không có sản phẩm trong giỏ hàng";
+        if(total == 0.0) {
+            request.setAttribute("emptyAlert", emptyAlert);
+            request.getRequestDispatcher("cart.jsp").forward(request,response);
+        } else {
+            c.commit(session);
+            response.sendRedirect("checkout.jsp");
+        }
     }
 }
