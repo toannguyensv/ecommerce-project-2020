@@ -132,9 +132,10 @@
         </div>
 
         <p style="height:5px; color:red; font-size: .9rem ; text-align: center">${mess}</p>
+        <input type="hidden" name="from" value="${param.from}">
 
         <div class="submit">
-            <button class="shadow" type="submit">ĐĂNG NHẬP</button>
+            <button class="shadow" type="submit" style="cursor: pointer">ĐĂNG NHẬP</button>
         </div>
 
         <div style="color: #999; font-size: .9rem; font-weight: 500; text-align: center;">
@@ -150,8 +151,9 @@
             </div>
         </div>
     </form>
-    <div class="sign-up" style="font-weight: 500; margin-top: 50px; cursor: pointer;">
-        <a href="sign-up.html" style="text-decoration: none; color: #307213">Đăng Ký</a></div>
+    <div class="sign-up" style="margin-top: 50px;">
+       Bạn chưa có tài khoản? <a href="sign-up.html" style="text-decoration: underline; color: #307213; font-weight: 500; cursor: pointer;">Đăng Ký</a>
+    </div>
 </div>
 
 <script src="js/jquery-3.3.1.min.js"></script>

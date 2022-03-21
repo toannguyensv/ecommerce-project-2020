@@ -124,6 +124,12 @@
                             <div class="checkout__order__total">Giảm giá <span>0đ</span></div>
                             <div class="checkout__order__total">Tổng tiền <span>${total/1000}00đ</span></div>
 
+<%--                            <c:if test="${sessionScope.acc == null}">--%>
+<%--                                <a href="login.jsp" style="width: 100%; font-size: 1rem; text-align: center; cursor: pointer" class="site-btn">ĐẶT HÀNG</a>--%>
+<%--                            </c:if>--%>
+<%--                            <c:if test="${sessionScope.acc != null}">--%>
+<%--                                <input style="width: 100%; font-size: 1rem" class="site-btn" type="submit" value="ĐẶT HÀNG" />--%>
+<%--                            </c:if>--%>
                             <input style="width: 100%; font-size: 1rem" class="site-btn" type="submit" value="ĐẶT HÀNG" />
 
                             <div class="vat-p">

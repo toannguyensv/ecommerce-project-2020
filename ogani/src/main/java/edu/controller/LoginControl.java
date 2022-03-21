@@ -23,13 +23,19 @@ public class LoginControl extends HttpServlet {
         String password = request.getParameter("pass");
         ProductEntity pe = new ProductEntity();
         Account a = pe.login(username,password);
+        String from = request.getParameter("from");
+
         if(a == null) {
             request.setAttribute("mess", "Sai tên đăng nhập hoặc mật khẩu!");
             request.getRequestDispatcher("login.jsp").forward(request,response);
         } else {
             HttpSession session = request.getSession();
             session.setAttribute("acc",a);
-            request.getRequestDispatcher("home").forward(request,response);
+            if(from.equalsIgnoreCase("")) {
+                request.getRequestDispatcher("home").forward(request,response);
+            } else {
+                response.sendRedirect("checkout");
+            }
         }
     }
 }

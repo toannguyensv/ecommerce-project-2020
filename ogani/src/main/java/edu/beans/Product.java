@@ -23,6 +23,14 @@ public class Product implements Serializable {
         this.priceLong = priceLong;
     }
 
+    @Override
+    public String toString() {
+        return "San pham: " +
+                "Ten: " + name + '\'' +
+                ", Gia: " + price + '\'' +
+                ", So luong: " + quantity;
+    }
+
     public long getPriceLong() {
         return priceLong;
     }

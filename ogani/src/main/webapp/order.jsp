@@ -336,7 +336,7 @@
                                     <tbody>
                                     <tr>
                                         <td style="text-align:left">
-                                            <p>1. Vui lòng upload file bản sao hóa đơn đã ký.</p>
+                                            <p>1. Vui lòng upload file chữ ký.</p>
                                             <p>2. Bằng việc tiến hành Đặt Hàng, khách hàng đồng ý với các Điều Kiện Giao Dịch Chung được ban hành bới OganiNLU.</p>
                                             <p>3. Liên hệ với chúng tôi nếu bạn gặp vấn đề trong việc nhận hàng.</p>
                                             <p>4. Mọi phản hồi xin gửi về:</p>
@@ -379,9 +379,9 @@
         </div>
 
         <div class="load-btn">
-            <button class="site-btn" style="margin: 20px" onclick=CreatePDFfromHTML()>Tải xuống hóa đơn</button>
+            <a href="download" class="site-btn" style="margin: 20px">Tải xuống hóa đơn</a>
             <br/>
-            <label for="myfile">Tải lên hóa đơn:</label>
+            <label for="myfile">Tải lên file ký:</label>
             <input type="file" id="myfile" name="myfile">
         </div>
 

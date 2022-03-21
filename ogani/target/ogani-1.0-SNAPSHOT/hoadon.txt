@@ -1,0 +1,9 @@
+asdf
+asf - asdf - asdf - asdf
+0329930377
+Product{name='Ớt chuông xanh 1kg', price='65.000đ', quantity=1}
+Product{name='Sườn non heo C.P khay 500g', price='209.000đ', quantity=1}
+Product{name='Xà lách lụa hữu cơ', price='25.500 ₫ /300g', quantity=1}
+
+Ship: 40.000đ
+339.000đ

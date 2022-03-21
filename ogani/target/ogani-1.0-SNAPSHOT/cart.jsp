@@ -135,7 +135,14 @@
                         <li>Tạm tính <span class="tongcong">${total/1000}00đ</span></li>
                         <li>Tổng cộng <span class="tongcong">${total/1000}00đ</span></li>
                     </ul>
-                    <a href="checkout" class="primary-btn">THANH TOÁN</a>
+
+                    <c:if test="${sessionScope.acc == null}">
+                        <a href="login.jsp?from=${pageContext.request.requestURI}" class="primary-btn">THANH TOÁN</a>
+                    </c:if>
+                    <c:if test="${sessionScope.acc != null}">
+                        <a href="checkout" class="primary-btn">THANH TOÁN</a>
+                    </c:if>
+
                     <p style="text-align: center;margin: 10px 0 0;color: red;">${emptyAlert}</p>
                 </div>
             </div>
