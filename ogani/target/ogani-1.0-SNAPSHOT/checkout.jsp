@@ -70,25 +70,14 @@
                                 </div>
                             </div>
                         </div>
+<%--                        <div class="checkout__input">--%>
+<%--                            <p style="font-size: 1.4rem; font-weight: bold; margin: 25px 0">Địa chỉ</p>--%>
+<%--                        </div>--%>
                         <div class="checkout__input">
-                            <p style="font-size: 1.4rem; font-weight: bold; margin: 25px 0">Địa chỉ</p>
-                        </div>
-                        <div class="checkout__input">
-                            <p>Số nhà, tên đường<span>*</span></p>
+                            <p>Địa chỉ giao hàng<span>*</span></p>
                             <input type="text" name="add1" required>
                         </div>
-                        <div class="checkout__input">
-                            <p>Xã/Phường<span>*</span></p>
-                            <input type="text" name="add2" required>
-                        </div>
-                        <div class="checkout__input">
-                            <p>Quận/Huyện<span>*</span></p>
-                            <input type="text" name="add3" required>
-                        </div>
-                        <div class="checkout__input">
-                            <p>Tỉnh/Thành Phố<span>*</span></p>
-                            <input type="text" name="add4" required>
-                        </div>
+
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="checkout__input">
@@ -100,7 +89,7 @@
 
 
                         <div class="checkout__input">
-                            <p>Lưu ý cho người bán</p>
+                            <p>Lời nhắn cho người bán</p>
                             <input type="text">
                         </div>
                     </div>

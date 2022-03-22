@@ -25,10 +25,9 @@ public class Product implements Serializable {
 
     @Override
     public String toString() {
-        return "San pham: " +
-                "Ten: " + name + '\'' +
-                ", Gia: " + price + '\'' +
-                ", So luong: " + quantity;
+        return name +
+                ", Price: " + price +
+                ", Quantity: " + quantity;
     }
 
     public long getPriceLong() {

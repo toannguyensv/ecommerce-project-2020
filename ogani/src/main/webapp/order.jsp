@@ -204,6 +204,14 @@
             text-align: center;
             margin-bottom: 3rem;
         }
+
+        .guide {
+            text-decoration: underline;
+        }
+        .guide:hover, .guide:focus {
+            text-decoration: underline;
+            color: #007bff;
+        }
     </style>
 
     <!-- Google Font -->
@@ -336,7 +344,7 @@
                                     <tbody>
                                     <tr>
                                         <td style="text-align:left">
-                                            <p>1. Vui lòng upload file chữ ký.</p>
+                                            <p>1. Vui lòng thực hiện theo hướng dẫn tạo và upload file signature để thực hiện đặt hàng. <a class="guide" href="#">Hướng dẫn</a></p>
                                             <p>2. Bằng việc tiến hành Đặt Hàng, khách hàng đồng ý với các Điều Kiện Giao Dịch Chung được ban hành bới OganiNLU.</p>
                                             <p>3. Liên hệ với chúng tôi nếu bạn gặp vấn đề trong việc nhận hàng.</p>
                                             <p>4. Mọi phản hồi xin gửi về:</p>
@@ -365,7 +373,11 @@
                                         <td contenteditable="true" style="text-align:left;border: 1px solid #000"> </td>
                                     </tr>
                                     <tr>
-                                        <td style="padding:60px 0 0; text-align: left">Được ủy quyền bởi: _____________________________ Ngày: __________</td>
+                                        <td>
+                                            <div class="load-btn">
+                                                <a href="getkey" class="site-btn" style="margin: 20px">Get private key</a>
+                                            </div>
+                                        </td>
                                     </tr>
                                     </tbody>
                                 </table>
