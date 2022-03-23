@@ -374,8 +374,15 @@
                                     </tr>
                                     <tr>
                                         <td>
+                                            <div class="load-btn" style="margin-bottom: 0">
+                                                <a href="getkey" class="site-btn" style="margin: 20px; width: 235px">Nhận private key</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
                                             <div class="load-btn">
-                                                <a href="getkey" class="site-btn" style="margin: 20px">Get private key</a>
+                                                <a href="gettool" class="site-btn" style="width: 235px">Tải công cụ tạo chữ ký</a>
                                             </div>
                                         </td>
                                     </tr>
@@ -390,24 +397,25 @@
             </div>
         </div>
 
-        <div class="load-btn">
+        <div class="load-btn" style="margin-bottom: 1rem">
             <a href="download" class="site-btn" style="margin: 20px">Tải xuống hóa đơn</a>
             <br/>
-            <label for="myfile">Tải lên file ký:</label>
-            <input type="file" id="myfile" name="myfile">
+            <input id="ajaxfile" style="width: 250px" type="file"/>
+            <button onclick="uploadFile()"> Upload </button>
+            <br/>
+            <a href="verify" class="btn btn-success" style="margin-top: 2rem" role="button">Xác nhận</a>
+        </div>
+        <div name="wrongAlert" style="margin-bottom: 1rem; text-align: center; color: red">
+            ${alert}
         </div>
 
 
-        <p style="text-align: center; font-size: 1.3rem; font-weight: bold">ĐIỀU KHOẢN DỊCH VỤ</p>
+        <p style="text-align: center; font-size: 1.3rem; font-weight: bold; margin-top: 3rem">ĐIỀU KHOẢN DỊCH VỤ</p>
         <div id="myDIV" onscroll="myFunction()">
             <iframe id="content" src='https://view.officeapps.live.com/op/embed.aspx?src=https://res.cloudinary.com/ddhcdehae/raw/upload/v1639302736/samples/term_w8ysrn.docx' frameborder='0'><a target='_blank' href='http://office.com'>Microsoft Office</a> document, powered by <a target='_blank' href='http://office.com/webapps'>Office Online</a>.</iframe>
         </div>
 
         <p id="demo"></p>
-        <form action="#" style="text-align: center">
-            <input style="margin-bottom: 20px" id="agree" type="checkbox" name="agree" value="agree" required> Tôi đã đọc và đồng ý<br>
-            <input class="site-btn" id="submit" type="submit" value="Submit">
-        </form>
     </div>
 </section>
 
@@ -441,6 +449,15 @@
 
 
 <script>
+    async function uploadFile() {
+        let formData = new FormData();
+        formData.append("file", ajaxfile.files[0]);
+        await fetch('fileuploadservlet', {
+            method: "POST",
+            body: formData
+        });
+        alert('Tải lên chữ ký thành công!');
+    }
 
     $(document).ready(function(){
 
