@@ -30,7 +30,7 @@ public class SignUpControl extends HttpServlet {
             Account a = pe.checkExist(user);
             if(a == null) {
                 pe.signUp(user,pass);
-                response.sendRedirect("home");
+                response.sendRedirect("login.jsp");
             } else {
                 request.setAttribute("mess", "Tên tài khoản đã tồn tại");
                 request.getRequestDispatcher("signup.jsp").forward(request,response);

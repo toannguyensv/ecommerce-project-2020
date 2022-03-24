@@ -152,7 +152,7 @@
         </div>
     </form>
     <div class="sign-up" style="margin-top: 50px;">
-       Bạn chưa có tài khoản? <a href="sign-up.html" style="text-decoration: underline; color: #307213; font-weight: 500; cursor: pointer;">Đăng Ký</a>
+       Bạn chưa có tài khoản? <a href="signup.jsp" style="text-decoration: underline; color: #307213; font-weight: 500; cursor: pointer;">Đăng Ký</a>
     </div>
 </div>
 
