@@ -24,17 +24,18 @@ import java.util.Collection;
 @WebServlet(name = "OrderControl", urlPatterns = "/order")
 public class OrderControl extends HttpServlet {
 
-
     public boolean isKeyFileAvailable(String path) {
         File dir = new File(path);
         if(!dir.exists()) {
-            dir.mkdirs();
-        }
-        File[] files = dir.listFiles();
-        if (files == null || files.length == 0) {
             return false;
+        } else {
+            File[] files = dir.listFiles();
+            if (files == null || files.length == 0) {
+                return false;
+            } else {
+                return true;
+            }
         }
-        return true;
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -51,6 +52,7 @@ public class OrderControl extends HttpServlet {
         Cart c = Cart.getCart(session);
         Collection<Product> data = c.getData();
         long total = c.total();
+        int tongTien = (int) total;
         String tong = (total/1000 + 40.0) + "00đ";
 
         Account account = (Account) session.getAttribute("acc");
@@ -62,6 +64,7 @@ public class OrderControl extends HttpServlet {
         String createTime = dtf.format(now);
 
         String fileName = folderName + "_" + createTime;
+        session.setAttribute("orderName", fileName);
 
         for(Product item: data){
             sanpham += item.toString() + "\n";
@@ -82,14 +85,12 @@ public class OrderControl extends HttpServlet {
         // create bill
         File file = new File(getServletContext().getRealPath("hoadon/"+ folderName + "/" + fileName + ".txt"));
         FileUtils.writeStringToFile(file, billDetail, "UTF-8");
+        ProductEntity pe = new ProductEntity();
+        pe.insertOrder(userId, fileName, tongTien, address, phone, "hoadon/"+folderName+"/"+fileName);
 
-        // create key
-//        boolean keyAvailable = isKeyFileAvailable(getServletContext().getRealPath("key/" + folderName + "/private"));
-//        if(!keyAvailable) {
-//            generateKey(getServletContext().getRealPath("key/" + folderName + "/public"),
-//                    getServletContext().getRealPath("key/" + folderName + "/private"));
-//        }
+        boolean getKeyVisible = isKeyFileAvailable(getServletContext().getRealPath("/key/" + folderName));
 
+        request.setAttribute("getKeyVisible", getKeyVisible);
         request.getRequestDispatcher("order.jsp").forward(request,response);
     }
 

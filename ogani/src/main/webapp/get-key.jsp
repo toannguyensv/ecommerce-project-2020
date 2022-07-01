@@ -59,6 +59,9 @@
     <div class="d-block text-center">
         <a href="key-confirm.jsp" class="btn btn-outline-success btn-lg">Tiếp tục</a>
     </div>
+    <div class="d-block text-center mt-4">
+        <h4 id="mess" class="text-danger">${mess}</h4>
+    </div>
 </div>
 
 <script src="js/jquery-3.3.1.min.js"></script>

@@ -2,6 +2,7 @@ package edu.controller;
 
 import edu.beans.Account;
 import edu.entity.ProductEntity;
+import org.apache.commons.io.FileUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,16 +18,14 @@ import java.security.KeyFactory;
 import java.security.PublicKey;
 import java.security.Signature;
 import java.security.spec.X509EncodedKeySpec;
+import java.util.Base64;
 
 @WebServlet(name = "verify", urlPatterns = "/verify")
 public class Verify extends HttpServlet {
-    public static boolean verifySignature(String pubKeyPath, String sigPath, String filePath) {
+    public static boolean verifySignature(String pubKeyBase64, String sigPath, String filePath) {
         boolean verifies = false;
         try {
-            FileInputStream keyfis = new FileInputStream(pubKeyPath);
-            byte[] encKey = new byte[keyfis.available()];
-            keyfis.read(encKey);
-            keyfis.close();
+            byte[] encKey = Base64.getDecoder().decode(pubKeyBase64);
             X509EncodedKeySpec pubKeySpec = new X509EncodedKeySpec(encKey);
             KeyFactory keyFactory = KeyFactory.getInstance("DSA", "SUN");
             PublicKey publicKey = keyFactory.generatePublic(pubKeySpec);
@@ -70,19 +69,34 @@ public class Verify extends HttpServlet {
         String folderName = String.valueOf(userId);
 
         DownloadServlet downloadServlet = new DownloadServlet();
-        String pubKeyPath = getServletContext().getRealPath("key/" + folderName + "/public/public.pub");
+        ProductEntity pe = new ProductEntity();
+        String pubKeyBase64 = pe.getPublicKeyOfUser(userId);
+
         String filePath = getServletContext().getRealPath("hoadon/" + folderName + "/"
                 + downloadServlet.pickLatestFileFromDownloads((getServletContext().getRealPath("hoadon/" + folderName))));
 
         String signPath = getServletContext().getRealPath("signature/" + folderName + "/"
                 + downloadServlet.pickLatestFileFromDownloads((getServletContext().getRealPath("signature/" + folderName))));
 
-        boolean result = verifySignature(pubKeyPath, signPath, filePath);
+        boolean result = verifySignature(pubKeyBase64, signPath, filePath);
+
+        System.out.println(pubKeyBase64);
+        System.out.println(result);
         if(!result) {
             String alert = "Chữ ký không hợp lệ";
             request.setAttribute("alert", alert);
             request.getRequestDispatcher("order.jsp").forward(request,response);
         } else {
+            byte[] signBytes = FileUtils.readFileToByteArray(new File(signPath));
+            String signBase64 = Base64.getEncoder().encodeToString(signBytes);
+            pe.saveSignature((String) session.getAttribute("orderName"), signBase64);
+
+            File keyFolder = new File(getServletContext().getRealPath("/key/" + folderName));
+            File[] fileList = keyFolder.listFiles();
+            if(fileList.length > 0) {
+                keyFolder.listFiles()[0].delete();
+            }
+
             File dir = new File(getServletContext().getRealPath("signature/" + folderName));
             for(File file: dir.listFiles()) {
                 if (!file.isDirectory()) {

@@ -144,6 +144,8 @@ public class ProductEntity {
                         rs.getInt(4),
                         rs.getInt(5));
             }
+            rs.close();
+            s.close();
         } catch (Exception e){
         }
         return null;
@@ -165,6 +167,8 @@ public class ProductEntity {
                         rs.getInt(4),
                         rs.getInt(5));
             }
+            rs.close();
+            s.close();
         } catch (Exception e){
         }
         return null;
@@ -180,6 +184,7 @@ public class ProductEntity {
             s.setString(2,pass);
 
             s.executeUpdate();
+
 
         } catch (Exception e){
         }
@@ -207,6 +212,8 @@ public class ProductEntity {
                 list.add(new Category(rs.getInt(1),
                         rs.getString(2)));
             }
+            rs.close();
+            s.close();
         } catch (Exception e){
         }
         return list;
@@ -230,6 +237,8 @@ public class ProductEntity {
                         rs.getLong(6)
                 ));
             }
+            rs.close();
+            s.close();
         } catch (Exception e){
         }
         return list;
@@ -252,6 +261,39 @@ public class ProductEntity {
         } catch (Exception e){
         }
     }
+    public void insertOrder(int userID, String orderName, int total, String address,
+                              String phone, String pathFile) {
+        String query = "INSERT INTO `order` (userID, `name`, totalMoney, address, phone, pathFileOrder)\n" +
+                "       VALUES (?, ?, ?, ?, ?, ?)";
+        PreparedStatement s = null;
+        try{
+            s = ConnectionDB.connect(query);
+            s.setInt(1, userID);
+            s.setString(2, orderName);
+            s.setInt(3, total);
+            s.setString(4, address);
+            s.setString(5, phone);
+            s.setString(6, pathFile);
+
+            s.executeUpdate();
+
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+    public void saveSignature(String orderName, String signature) {
+        String query = "UPDATE `order` SET signatureValue=? WHERE `name`=?";
+        PreparedStatement s = null;
+        try{
+            s = ConnectionDB.connect(query);
+            s.setString(1, signature);
+            s.setString(2, orderName);
+            s.executeUpdate();
+
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 
     public void savePublicKey(String user, String publicKey) {
         String query = "UPDATE account SET publicKey=? WHERE `user`=?";
@@ -262,6 +304,7 @@ public class ProductEntity {
             s.setString(2, user);
             s.executeUpdate();
 
+            s.close();
         } catch (Exception e){
             e.printStackTrace();
         }
@@ -378,5 +421,27 @@ public class ProductEntity {
         ProductEntity pe = new ProductEntity();
         List<Product> listPage = pe.get5Each(1,5);
         System.out.println(listPage);
+    }
+
+    public String getPublicKeyOfUser(int userId) {
+        String publicKey = "";
+        String query = "select * from account\n"
+                + "where `uID`=?";
+
+        PreparedStatement s = null;
+        try {
+            s = ConnectionDB.connect(query);
+            s.setInt(1, userId);
+
+            ResultSet rs = s.executeQuery();
+            if(rs.next()) {
+                publicKey = rs.getString(6);
+            }
+            rs.close();
+            s.close();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return publicKey;
     }
 }

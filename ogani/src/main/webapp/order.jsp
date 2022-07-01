@@ -380,9 +380,14 @@
                                     </tr>
                                     <tr>
                                         <td>
+                                            <c:if test="${getKeyVisible}">
                                             <div class="load-btn" style="margin-bottom: 0">
                                                 <a href="get-key.jsp" class="site-btn" style="margin: 20px; width: 235px">Nhận private key</a>
                                             </div>
+                                            </c:if>
+                                            <c:if test="${!getKeyVisible}">
+                                                <div></div>
+                                            </c:if>
                                         </td>
                                     </tr>
                                     <tr>
@@ -406,12 +411,14 @@
         <div class="load-btn" style="margin-bottom: 1rem">
             <a href="download" class="site-btn" style="margin: 20px">Tải xuống hóa đơn</a>
             <br/>
-            <input id="ajaxfile" style="width: 250px" type="file"/>
-            <button onclick="uploadFile()"> Upload </button>
+            <div class="custom-file w-50 mt-5">
+                <input onchange="uploadFile()" id="ajaxfile" class="custom-file-input" type="file"/>
+                <label class="custom-file-label" for="ajaxfile" id="ajaxfilelabel">Tải lên tập tin signature đã tạo</label>
+            </div>
             <br/>
             <a href="verify" class="btn btn-success" style="margin-top: 2rem" role="button">Xác nhận</a>
         </div>
-        <div name="wrongAlert" style="margin-bottom: 1rem; text-align: center; color: red">
+        <div name="wrongAlert" style="margin-bottom: 1rem; text-align: center; color: red" id="mess">
             ${alert}
         </div>
 
@@ -456,13 +463,21 @@
 
 <script>
     async function uploadFile() {
+        document.getElementById('ajaxfilelabel').innerHTML = ajaxfile.files[0].name;
+        document.getElementById('mess').innerHTML = "";
+
         let formData = new FormData();
         formData.append("file", ajaxfile.files[0]);
         await fetch('fileuploadservlet', {
             method: "POST",
             body: formData
+        })
+        .then((response) => {
+            alert('Tải lên thành công!');
+        })
+        .catch((error) => {
+            alert('Đã có lỗi khi tải lên. Vui lòng kiểm tra lại tập tin')
         });
-        alert('Tải lên chữ ký thành công!');
     }
 
     $(document).ready(function(){

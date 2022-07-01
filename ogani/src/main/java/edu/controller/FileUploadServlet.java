@@ -42,12 +42,19 @@ public class FileUploadServlet extends HttpServlet {
             dir.mkdirs();
         }
 
+        File directory = new File(getServletContext().getRealPath("/signature/" + folderName));
+        for(File file: directory.listFiles()) {
+            if (!file.isDirectory()) {
+                file.delete();
+            }
+        }
+
         Part filePart = request.getPart("file");
         String fileName = filePart.getSubmittedFileName();
         for (Part part : request.getParts()) {
             part.write(savePath + fileName);
         }
-        response.getWriter().print("Tải lên chữ ký thành công.");
+        response.getWriter().print("Tải lên thành công.");
     }
 
 }

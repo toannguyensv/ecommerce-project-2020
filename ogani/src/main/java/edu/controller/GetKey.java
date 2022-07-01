@@ -29,21 +29,26 @@ public class GetKey extends HttpServlet {
         String folderName = String.valueOf(userId);
 
         File filepath = new File(getServletContext().getRealPath("key/" + folderName) + "/private.key");
-        byte[] data = FileUtils.readFileToByteArray(filepath);
-        // Thiết lập thông tin trả về
-        response.setContentType("application/octet-stream");
-        response.setHeader("Content-disposition", "attachment; filename=private.key");
-        response.setContentLength(data.length);
-        InputStream inputStream = new BufferedInputStream(new ByteArrayInputStream(data));
-        // Ghi file ra response outputstream.
-        OutputStream outStream = response.getOutputStream();
-        byte[] buffer = new byte[4096];
-        int bytesRead = -1;
-        while ((bytesRead = inputStream.read(buffer)) != -1) {
-            outStream.write(buffer, 0, bytesRead);
+        if(!filepath.exists()) {
+            request.setAttribute("mess", "File không tồn tại!");
+            request.getRequestDispatcher("get-key.jsp").forward(request, response);
+        } else {
+            byte[] data = FileUtils.readFileToByteArray(filepath);
+            // Thiết lập thông tin trả về
+            response.setContentType("application/octet-stream");
+            response.setHeader("Content-disposition", "attachment; filename=private.key");
+            response.setContentLength(data.length);
+            InputStream inputStream = new BufferedInputStream(new ByteArrayInputStream(data));
+            // Ghi file ra response outputstream.
+            OutputStream outStream = response.getOutputStream();
+            byte[] buffer = new byte[4096];
+            int bytesRead = -1;
+            while ((bytesRead = inputStream.read(buffer)) != -1) {
+                outStream.write(buffer, 0, bytesRead);
+            }
+            inputStream.close();
+            outStream.close();
         }
-        inputStream.close();
-        outStream.close();
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);

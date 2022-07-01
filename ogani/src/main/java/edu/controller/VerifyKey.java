@@ -65,6 +65,7 @@ public class VerifyKey extends HttpServlet {
             if (equal) {
                 response.sendRedirect("verify-success.html");
                 uploadKey.delete();
+                originalKey.delete();
             }
             else {
                 request.setAttribute("mess", "Tập tin tải lên không phải Private Key của bạn. Hãy thử lại");
