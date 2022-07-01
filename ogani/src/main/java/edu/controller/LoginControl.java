@@ -26,7 +26,7 @@ public class LoginControl extends HttpServlet {
         String from = request.getParameter("from");
 
         if(a == null) {
-            request.setAttribute("mess", "Sai tên đăng nhập hoặc mật khẩu!");
+            request.setAttribute("mess", "Sai thông tin đăng nhập!");
             request.getRequestDispatcher("login.jsp").forward(request,response);
         } else {
             HttpSession session = request.getSession();

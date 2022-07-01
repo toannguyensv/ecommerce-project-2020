@@ -253,6 +253,20 @@ public class ProductEntity {
         }
     }
 
+    public void savePublicKey(String user, String publicKey) {
+        String query = "UPDATE account SET publicKey=? WHERE `user`=?";
+        PreparedStatement s = null;
+        try{
+            s = ConnectionDB.connect(query);
+            s.setString(1, publicKey);
+            s.setString(2, user);
+            s.executeUpdate();
+
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
     public void editProduct(String name, String img, String price,
                               String priceLong, String category, String id) {
         String query = "UPDATE products\n" +

@@ -1,6 +1,7 @@
 <%@ page import="edu.beans.Product" %>
 <%@ page import="edu.model.Cart" %>
 <%@ page import="java.util.Collection" %>
+<%@ page import="edu.beans.Account" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
@@ -227,7 +228,12 @@
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
-
+<%
+    Account acc = (Account) session.getAttribute("acc");
+    if (acc == null) {
+        response.sendRedirect("login.jsp");
+    }
+%>
 <body>
 <!-- Page Preloder -->
 <div id="preloder">
@@ -375,7 +381,7 @@
                                     <tr>
                                         <td>
                                             <div class="load-btn" style="margin-bottom: 0">
-                                                <a href="getkey" class="site-btn" style="margin: 20px; width: 235px">Nhận private key</a>
+                                                <a href="get-key.jsp" class="site-btn" style="margin: 20px; width: 235px">Nhận private key</a>
                                             </div>
                                         </td>
                                     </tr>
@@ -508,33 +514,7 @@
 
     });
 </script>
-<script type="text/javascript">
-    function CreatePDFfromHTML() {
-        var HTML_Width = $(".html-content").width();
-        var HTML_Height = $(".html-content").height();
-        var top_left_margin = 15;
-        var PDF_Width = HTML_Width + (top_left_margin * 2);
-        var PDF_Height = (PDF_Width * 1.5) + (top_left_margin * 2);
-        var canvas_image_width = HTML_Width;
-        var canvas_image_height = HTML_Height;
-
-        var totalPDFPages = Math.ceil(HTML_Height / PDF_Height) - 1;
-
-        html2canvas($(".html-content")[0]).then(function (canvas) {
-            var imgData = canvas.toDataURL("image/jpeg", 1.0);
-            var pdf = new jsPDF('p', 'pt', [PDF_Width, PDF_Height]);
-            pdf.addImage(imgData, 'JPG', top_left_margin, top_left_margin, canvas_image_width, canvas_image_height);
-            for (var i = 1; i <= totalPDFPages; i++) {
-                pdf.addPage(PDF_Width, PDF_Height);
-                pdf.addImage(imgData, 'JPG', top_left_margin, -(PDF_Height*i)+(top_left_margin*4),canvas_image_width,canvas_image_height);
-            }
-            pdf.save("verify.pdf");
-        });
-    }
-</script>
 <!-- Js Plugins -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
-<script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
 <script src="js/jquery-3.3.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.nice-select.min.js"></script>

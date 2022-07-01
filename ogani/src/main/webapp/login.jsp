@@ -125,7 +125,7 @@
         <h2 style="text-shadow:0px 0px 2px #aaa;">Đăng Nhập</h2>
 
         <div class="input-gr shadow">
-            <input id="name" type="text" name="user" placeholder="Tên đăng nhập">
+            <input id="name" type="text" name="user" placeholder="Email">
         </div>
         <div class="input-gr shadow">
             <input id="password" type="password" name="pass" placeholder="Mật khẩu">

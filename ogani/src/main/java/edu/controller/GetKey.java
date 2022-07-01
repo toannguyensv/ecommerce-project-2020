@@ -28,7 +28,7 @@ public class GetKey extends HttpServlet {
         int userId = account.getId();
         String folderName = String.valueOf(userId);
 
-        File filepath = new File(getServletContext().getRealPath("key/" + folderName + "/private") + "/private.key");
+        File filepath = new File(getServletContext().getRealPath("key/" + folderName) + "/private.key");
         byte[] data = FileUtils.readFileToByteArray(filepath);
         // Thiết lập thông tin trả về
         response.setContentType("application/octet-stream");

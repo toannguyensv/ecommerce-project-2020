@@ -2,6 +2,7 @@ package edu.controller;
 
 import edu.beans.Account;
 import edu.beans.Product;
+import edu.entity.ProductEntity;
 import edu.model.Cart;
 import org.apache.commons.io.FileUtils;
 
@@ -17,37 +18,12 @@ import java.io.IOException;
 import java.security.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Base64;
 import java.util.Collection;
 
 @WebServlet(name = "OrderControl", urlPatterns = "/order")
 public class OrderControl extends HttpServlet {
-    public static void generateKey(String pubKeyDest, String prvKeyDest){
-        File pubFile = new File(pubKeyDest);
-        if(!pubFile.exists()) {
-            pubFile.mkdirs();
-        }
-        try {
-            KeyPairGenerator keyGen = KeyPairGenerator.getInstance("DSA","SUN");
-            SecureRandom random = SecureRandom.getInstance("SHA1PRNG","SUN");
-            keyGen.initialize(1024,random);
-            KeyPair pair = keyGen.generateKeyPair();
-            PrivateKey priv = pair.getPrivate();
-            PublicKey pub = pair.getPublic();
 
-            //        save public key
-            byte[] publicKey = pub.getEncoded();
-            FileOutputStream publicKeyFile = new FileOutputStream(pubKeyDest + "/public.pub");
-            publicKeyFile.write(publicKey);
-            publicKeyFile.close();
-            //        save private key
-            byte[] privateKey = priv.getEncoded();
-            FileOutputStream privateKeyFile = new FileOutputStream(prvKeyDest + "/private.key");
-            privateKeyFile.write(privateKey);
-            privateKeyFile.close();
-        } catch (Exception e){
-            System.err.println(e.toString());
-        }
-    }
 
     public boolean isKeyFileAvailable(String path) {
         File dir = new File(path);
@@ -108,11 +84,11 @@ public class OrderControl extends HttpServlet {
         FileUtils.writeStringToFile(file, billDetail, "UTF-8");
 
         // create key
-        boolean keyAvailable = isKeyFileAvailable(getServletContext().getRealPath("key/" + folderName + "/private"));
-        if(!keyAvailable) {
-            generateKey(getServletContext().getRealPath("key/" + folderName + "/public"),
-                    getServletContext().getRealPath("key/" + folderName + "/private"));
-        }
+//        boolean keyAvailable = isKeyFileAvailable(getServletContext().getRealPath("key/" + folderName + "/private"));
+//        if(!keyAvailable) {
+//            generateKey(getServletContext().getRealPath("key/" + folderName + "/public"),
+//                    getServletContext().getRealPath("key/" + folderName + "/private"));
+//        }
 
         request.getRequestDispatcher("order.jsp").forward(request,response);
     }

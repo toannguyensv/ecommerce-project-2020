@@ -10,6 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Đăng ký</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
@@ -40,24 +41,25 @@
             font-weight: bold;
             font-size: 1.8rem;
             color: #307213;
-            margin: 30px auto;
+            margin: 10px auto 20px;
         }
         input{
-            border:none;
+            border-radius: 16px !important;
             font-size: 1rem;
-            width: 90%;
+            width: 100%;
             background-color: transparent;
-            height: 50px;
+            height: 50px !important;
             padding: 0 16px;
             font-weight: 700;
+            border: none;
             outline: none;
         }
         .input-gr{
-            margin: 10px auto 20px;
+            margin: 10px auto 40px;
             font-size: .8rem;
             width: 300px;
             height: 50px;
-            border-radius: 16px;
+            border-radius: 16px !important;
             padding: 0;
         }
         .label{
@@ -66,7 +68,7 @@
             font-size: .7rem;
         }
         ::placeholder{
-            color: #307213;
+            color: #307213 !important;
             font-weight: 700;
             font-size: .9rem;
             text-shadow: 0 0 2px #ddd;
@@ -75,7 +77,7 @@
         .submit{
             width: 160px;
             height: 50px;
-            margin: 30px auto 50px;
+            margin: 20px auto 10px;
             padding: 0;
             transform: translateX(-3px);
         }
@@ -104,6 +106,9 @@
             line-height: 50px;
             cursor: pointer;
         }
+        .halfOpacity {
+            opacity: 0.5;
+        }
     </style>
 </head>
 
@@ -115,19 +120,22 @@
     <form action="signup" method="post">
         <h2 style="text-shadow:0px 0px 2px #aaa;">Đăng Ký</h2>
         <div class="input-gr shadow">
-            <input id="name" type="text" name="user" placeholder="Tên tài khoản">
+            <input id="name" type="text" name="user" placeholder="Email" onkeyup="onChangeEmail()" required>
+            <div id="emailValid" class="text-center invalid-feedback" style="font-size: 100%"></div>
         </div>
         <div class="input-gr shadow">
-            <input id="password" type="password" name="pass" placeholder="Mật khẩu">
+            <input id="password" type="password" name="pass" placeholder="Mật khẩu" onkeyup="onChangePassword()" required>
+            <div id="passValid" class="text-center invalid-feedback" style="font-size: 100%"></div>
         </div>
         <div class="input-gr shadow">
-            <input id="repassword" type="password" name="repass" placeholder="Nhập lại mật khẩu">
+            <input id="repassword" type="password" name="repass" placeholder="Nhập lại mật khẩu" onkeyup="onChangeRepassword()" required>
+            <div id="rePassValid" class="text-center invalid-feedback" style="font-size: 100%"></div>
         </div>
 
-        <p style="height:5px; color:red; font-size: .9rem ; text-align: center">${mess}</p>
+        <p style="line-height:5px; color:red; font-size: .9rem ; text-align: center">${mess}</p>
 
         <div class="submit">
-            <button class="shadow" type="submit">ĐĂNG KÝ</button>
+            <button id="submit" class="shadow" type="submit">ĐĂNG KÝ</button>
         </div>
 
         <div style="color: #999; font-size: .9rem; font-weight: 500; text-align: center;">
@@ -154,5 +162,53 @@
 <script src="js/mixitup.min.js"></script>
 <script src="js/owl.carousel.min.js"></script>
 <script src="js/main.js"></script>
+<script type="text/javascript">
+    let nameElement = document.getElementById("name");
+    let mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+    function onChangeEmail() {
+        if (mailFormat.test(nameElement.value))
+        {
+            nameElement.className = "form-control is-valid";
+            document.getElementById("submit").disabled = false;
+            document.getElementById("submit").className = "shadow";
+        } else {
+            document.getElementById("submit").disabled = true;
+            document.getElementById("submit").className = "shadow halfOpacity";
+            nameElement.className = "form-control is-invalid";
+            document.getElementById("emailValid").innerHTML = "Email " + nameElement.value + " không hợp lệ";
+        }
+    };
+
+    let passElement = document.getElementById("password");
+    let repassElement = document.getElementById("repassword");
+
+    function onChangePassword() {
+        if(passElement.value.length < 4) {
+            document.getElementById("submit").disabled = true;
+            document.getElementById("submit").className = "shadow halfOpacity";
+            passElement.className = "form-control is-invalid";
+            document.getElementById("passValid").innerHTML = "Mật khẩu phải có ít nhất 4 ký tự";
+        } else {
+            document.getElementById("submit").disabled = false;
+            document.getElementById("submit").className = "shadow";
+            passElement.className = "form-control is-valid";
+        }
+    }
+
+    function onChangeRepassword() {
+        if(passElement.value !== repassElement.value) {
+            document.getElementById("submit").disabled = true;
+            document.getElementById("submit").className = "shadow halfOpacity";
+            repassElement.className = "form-control is-invalid";
+            document.getElementById("rePassValid").innerHTML = "Mật khẩu nhập lại không khớp";
+        } else {
+            document.getElementById("submit").disabled = false;
+            document.getElementById("submit").className = "shadow";
+            repassElement.className = "form-control is-valid";
+        }
+    }
+
+</script>
 </body>
 </html>

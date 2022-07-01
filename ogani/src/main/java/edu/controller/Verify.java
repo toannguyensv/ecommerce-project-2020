@@ -84,9 +84,11 @@ public class Verify extends HttpServlet {
             request.getRequestDispatcher("order.jsp").forward(request,response);
         } else {
             File dir = new File(getServletContext().getRealPath("signature/" + folderName));
-            for(File file: dir.listFiles())
-                if (!file.isDirectory())
+            for(File file: dir.listFiles()) {
+                if (!file.isDirectory()) {
                     file.delete();
+                }
+            }
             request.getRequestDispatcher("success.jsp").forward(request,response);
         }
     }
