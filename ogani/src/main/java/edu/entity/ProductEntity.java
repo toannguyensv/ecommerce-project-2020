@@ -185,7 +185,7 @@ public class ProductEntity {
 
             s.executeUpdate();
 
-
+            s.close();
         } catch (Exception e){
         }
     }
@@ -276,7 +276,7 @@ public class ProductEntity {
             s.setString(6, pathFile);
 
             s.executeUpdate();
-
+            s.close();
         } catch (Exception e){
             e.printStackTrace();
         }
@@ -289,6 +289,7 @@ public class ProductEntity {
             s.setString(1, signature);
             s.setString(2, orderName);
             s.executeUpdate();
+            s.close();
 
         } catch (Exception e){
             e.printStackTrace();
@@ -437,8 +438,6 @@ public class ProductEntity {
             if(rs.next()) {
                 publicKey = rs.getString(6);
             }
-            rs.close();
-            s.close();
         } catch (Exception e){
             e.printStackTrace();
         }

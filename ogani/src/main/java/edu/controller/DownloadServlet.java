@@ -56,7 +56,7 @@ public class DownloadServlet extends HttpServlet {
         byte[] data = FileUtils.readFileToByteArray(filepath);
         // Thiết lập thông tin trả về
         response.setContentType("application/octet-stream");
-        response.setHeader("Content-disposition", "attachment; filename=hoadon "+fileName+".txt");
+        response.setHeader("Content-disposition", "attachment; filename=hoadon "+fileName);
         response.setContentLength(data.length);
         InputStream inputStream = new BufferedInputStream(new ByteArrayInputStream(data));
         // Ghi file ra response outputstream.

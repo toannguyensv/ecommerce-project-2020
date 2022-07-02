@@ -23,6 +23,7 @@ public class LoginControl extends HttpServlet {
         String password = request.getParameter("pass");
         ProductEntity pe = new ProductEntity();
         Account a = pe.login(username,password);
+        String publicKey = pe.getPublicKeyOfUser(a.getId());
         String from = request.getParameter("from");
 
         if(a == null) {
@@ -31,8 +32,9 @@ public class LoginControl extends HttpServlet {
         } else {
             HttpSession session = request.getSession();
             session.setAttribute("acc",a);
+            session.setAttribute("publicKey", publicKey);
             if(from.equalsIgnoreCase("")) {
-                request.getRequestDispatcher("home").forward(request,response);
+                response.sendRedirect("home");
             } else {
                 response.sendRedirect("checkout");
             }

@@ -48,19 +48,17 @@
         <div class="media-body my-5 mx-5">
             <h2 class="mt-0 mb-5">Nhận Private Key của bạn</h2>
             <b>Private Key</b> dùng để xác minh người thực hiện mua hàng chính là bạn. <br><br>
-            Tải tập tin <b>Private Key</b> này xuống và lưu giữ trên thiết bị của bạn hoặc sao lưu ở những môi trường lưu trữ khác.<br><br>
-            <b><i>Lưu ý:</i></b> Bạn không thể đặt hàng nếu không có tập tin <b>Private Key</b>.
+            Sao chép <b>Private Key</b> này xuống và lưu giữ trên thiết bị của bạn hoặc sao lưu ở những môi trường lưu trữ khác.<br><br>
+            <b><i>Lưu ý:</i></b> Bạn không thể đặt hàng nếu không có Private Key. Chúng tôi không thể khôi phục Private Key của bạn,
+             nếu có thắc mắc vui lòng liên hệ bộ phận hỗ trợ <a href="#">tại đây.</a>
         </div>
-        <div class="d-flex flex-column mx-5">
-            <img class="mb-4 mt-5" src="img/key-img.png" alt="image" style="width:15rem; height: 15rem"/>
-            <a class="btn btn-success btn-lg mb-5" href="getkey">Tải xuống</a>
+        <div class="d-flex flex-column mx-5 my-5" style="width: 40%">
+            <textarea onfocus="this.select()" rows="10" readonly>${privateKey}</textarea>
+            <button class="btn btn-success mt-3">Sao chép</button>
         </div>
     </div>
     <div class="d-block text-center">
-        <a href="key-confirm.jsp" class="btn btn-outline-success btn-lg">Tiếp tục</a>
-    </div>
-    <div class="d-block text-center mt-4">
-        <h4 id="mess" class="text-danger">${mess}</h4>
+        <a href="home" class="btn btn-outline-success btn-lg">Tiếp tục</a>
     </div>
 </div>
 
@@ -72,5 +70,12 @@
 <script src="js/mixitup.min.js"></script>
 <script src="js/owl.carousel.min.js"></script>
 <script src="js/main.js"></script>
+<script type="text/javascript">
+    $("button").click(function(){
+        $("textarea").select();
+        document.execCommand('copy');
+        alert("Sao chép thành công")
+    });
+</script>
 </body>
 </html>

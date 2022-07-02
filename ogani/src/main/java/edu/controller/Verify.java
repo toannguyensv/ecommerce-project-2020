@@ -70,7 +70,7 @@ public class Verify extends HttpServlet {
 
         DownloadServlet downloadServlet = new DownloadServlet();
         ProductEntity pe = new ProductEntity();
-        String pubKeyBase64 = pe.getPublicKeyOfUser(userId);
+        String pubKeyBase64 = (String) session.getAttribute("publicKey");
 
         String filePath = getServletContext().getRealPath("hoadon/" + folderName + "/"
                 + downloadServlet.pickLatestFileFromDownloads((getServletContext().getRealPath("hoadon/" + folderName))));
@@ -91,19 +91,16 @@ public class Verify extends HttpServlet {
             String signBase64 = Base64.getEncoder().encodeToString(signBytes);
             pe.saveSignature((String) session.getAttribute("orderName"), signBase64);
 
-            File keyFolder = new File(getServletContext().getRealPath("/key/" + folderName));
-            File[] fileList = keyFolder.listFiles();
-            if(fileList.length > 0) {
-                keyFolder.listFiles()[0].delete();
-            }
-
             File dir = new File(getServletContext().getRealPath("signature/" + folderName));
             for(File file: dir.listFiles()) {
-                if (!file.isDirectory()) {
+                if (file == null) {
+                    return;
+                } else {
                     file.delete();
                 }
             }
-            request.getRequestDispatcher("success.jsp").forward(request,response);
+            session.removeAttribute("cart");
+            response.sendRedirect("success.jsp");
         }
     }
 }
