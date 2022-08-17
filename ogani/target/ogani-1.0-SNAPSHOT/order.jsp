@@ -393,7 +393,7 @@
                                     <tr>
                                         <td>
                                             <div class="load-btn">
-                                                <a href="gettool" class="site-btn" style="width: 235px">Tải công cụ tạo chữ ký</a>
+                                                <a href="https://drive.google.com/file/d/12gnjjr_vyLQZWXkkR1cFXPvbIKzoAN77/view?usp=sharing" target="_blank" class="site-btn" style="width: 235px">Tải công cụ tạo chữ ký</a>
                                             </div>
                                         </td>
                                     </tr>
@@ -462,6 +462,7 @@
 
 
 <script>
+
     async function uploadFile() {
         document.getElementById('ajaxfilelabel').innerHTML = ajaxfile.files[0].name;
         document.getElementById('mess').innerHTML = "";
