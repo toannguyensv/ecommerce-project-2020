@@ -1,6 +1,7 @@
 package edu.controller;
 
 import edu.beans.Account;
+import org.apache.commons.io.FileUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -8,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.Base64;
 
 @WebServlet(name = "FileUploadServlet", urlPatterns = { "/fileuploadservlet" })
 @MultipartConfig(
@@ -54,6 +56,14 @@ public class FileUploadServlet extends HttpServlet {
         for (Part part : request.getParts()) {
             part.write(savePath + fileName);
         }
+        DownloadServlet downloadServlet = new DownloadServlet();
+        String signPath = getServletContext().getRealPath("signature/" + folderName + "/"
+                + downloadServlet.pickLatestFileFromDownloads((getServletContext().getRealPath("signature/" + folderName))));
+
+        byte[] signBytes = FileUtils.readFileToByteArray(new File(signPath));
+        String signBase64 = Base64.getEncoder().encodeToString(signBytes);
+        session.setAttribute("signBase64", signBase64);
+        System.out.println(signBase64);
         response.getWriter().print("Tải lên thành công.");
     }
 

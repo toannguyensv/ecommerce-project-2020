@@ -64,6 +64,8 @@ public class Verify extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
 
         HttpSession session = request.getSession();
+        String signBase64 = (String) session.getAttribute("signBase64");
+        System.out.println("sign from session: "+signBase64);
         Account account = (Account) session.getAttribute("acc");
         int userId = account.getId();
         String folderName = String.valueOf(userId);
@@ -75,32 +77,41 @@ public class Verify extends HttpServlet {
         String filePath = getServletContext().getRealPath("hoadon/" + folderName + "/"
                 + downloadServlet.pickLatestFileFromDownloads((getServletContext().getRealPath("hoadon/" + folderName))));
 
-        String signPath = getServletContext().getRealPath("signature/" + folderName + "/"
-                + downloadServlet.pickLatestFileFromDownloads((getServletContext().getRealPath("signature/" + folderName))));
+        File directory = new File(getServletContext().getRealPath("signature/" + folderName));
+        File[] fileList = directory.listFiles();
 
-        boolean result = verifySignature(pubKeyBase64, signPath, filePath);
-
-        System.out.println(pubKeyBase64);
-        System.out.println(result);
-        if(!result) {
-            String alert = "Chữ ký không hợp lệ";
-            request.setAttribute("alert", alert);
+        if(fileList.length == 0) {
+            request.setAttribute("alert", "Chưa có tập tin nào được tải lên!");
             request.getRequestDispatcher("order.jsp").forward(request,response);
         } else {
-            byte[] signBytes = FileUtils.readFileToByteArray(new File(signPath));
-            String signBase64 = Base64.getEncoder().encodeToString(signBytes);
-            pe.saveSignature((String) session.getAttribute("orderName"), signBase64);
+            String signPath = getServletContext().getRealPath("signature/" + folderName + "/"
+                    + downloadServlet.pickLatestFileFromDownloads((getServletContext().getRealPath("signature/" + folderName))));
 
-            File dir = new File(getServletContext().getRealPath("signature/" + folderName));
-            for(File file: dir.listFiles()) {
-                if (file == null) {
-                    return;
-                } else {
-                    file.delete();
+
+            boolean result = verifySignature(pubKeyBase64, signPath, filePath);
+            System.out.println(pubKeyBase64);
+            System.out.println(result);
+            String orderName = (String) session.getAttribute("orderName");
+
+            System.out.println(signBase64);
+            if(!result) {
+                String alert = "Chữ ký không hợp lệ";
+                request.setAttribute("alert", alert);
+                request.getRequestDispatcher("order.jsp").forward(request,response);
+            } else {
+                pe.saveSignature(orderName, signBase64);
+
+                File dir = new File(getServletContext().getRealPath("signature/" + folderName));
+                for(File file: dir.listFiles()) {
+                    if (file == null) {
+                        return;
+                    } else {
+                        file.delete();
+                    }
                 }
+                session.removeAttribute("cart");
+                response.sendRedirect("success.jsp");
             }
-            session.removeAttribute("cart");
-            response.sendRedirect("success.jsp");
         }
     }
 }
